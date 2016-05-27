@@ -1,0 +1,45 @@
+This directory consists of a series of test files to check out xcip.
+
+test1:  Checks against movement of objects after multiple read/writes.
+   1. Turn on grid.
+   2. Get_file test1   (move to left side)
+   3. Put_file test1a
+   4. Get_file test1a  (do not clear, center)
+   5. Check that boxes, circles and text have not moved.
+   6. diff test1 test1a
+
+test2:  Checks xcip window screen size.
+   *** NOTE: this test does not work on Sun workstations running xcip  ***
+   ***       as box will be greater than screen size!                  ***
+   1. Turn on grid.
+   2. Get_file test2   (center)
+   3. Check that box goes thru outer most grid points.
+
+test3:  Checks printing of xjpic error message when doing get_file.
+   1. Get_file test3
+
+test4:  
+   
+test5:  Checks against movement of objects after multiple read/writes.
+   1. Turn on grid.
+   2. Get_file test5   (center)
+   3. Put_file test5a
+   4. Get_file test5a  (do not clear, center)
+   5. Check that all dissappears.
+
+test6: Loads all fonts.
+   1. Get_file test6
+   2. Check against printout.
+
+test7: Loads all fonts and sizes.
+   1. Get_file test7
+   2. Check against printout.
+
+test8: Loads Roman text in tight enclosing boxes.
+   1. Get_file test8
+   2. Check against printout.
+
+test9: Loads Helvetica text in tight enclosing boxes.
+   1. Get_file test9
+   2. Check against printout.
+

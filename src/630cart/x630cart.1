@@ -1,0 +1,288 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.lg 0
+.ds ZZ DEVELOPMENT PACKAGE
+.TH 630CART "630 MTG"
+.XE "630cart"
+.SH NAME
+630cart \- create 630 cartridge EPROM images for 630 applications
+.SH SYNOPSIS
+\fB630cart [-o <image>] [-a <ramapplist>] [-r <romapplist>] [-f <fontlist>]\fI
+.SH DESCRIPTION
+Input to \fI630cart\fP is any number (zero or more) of 630 MTG
+application(s) in object (downloadable) and/or source
+(rom executable, i.e., no writes to the data section) format
+along with any number (zero or more) of \fIloadfont(1)\fP compatible fonts.
+\fI630cart\fP will  combine the input and produce as output
+two, four or six INTEL HEX EPROM image files called image.NNN, 
+where the prefix name
+.I image 
+is specified with the -o option
+and NNN specifies where on the 630 cartridge circuit card 
+the resulting EPROM should be placed.  See the figure below for
+EPROM locations.  The prefix name will default to
+.I cartridge 
+when the -o option is omitted.  The number of EPROM image files produced
+depends on the cumulative size of the application(s) (downloadable and source)
+and font(s) submitted to 
+.I 630cart.  
+The maximum cumulative size is 384K bytes.
+.RS 3
+.ft CW
+.nf
+          ------------
+          |          |
+          ||-_-||-_-||
+         _|| 1 || 0 ||
+        |= | 0 || 0 ||
+        |= | 0 || 0 ||
+        |= |___||___||
+        |=           |
+        |= |-_-||-_-||
+        |= | 1 || 0 ||
+        |= | 0 || 0 ||
+         - | 1 || 1 ||
+          ||___||___||
+          |          |
+          ||-_-||-_-||
+          || 1 || 0 ||
+          || 0 || 0 ||
+          || 2 || 2 ||
+          ||___||___||
+          ------------
+.fi
+.ft R
+.RE
+.PP
+Downloadable 630 MTG applications, rom executable 630 MTG applications
+and fonts are specified by the input files
+.I ramapplist,
+.I romapplist
+and 
+.I fontlist
+respectively.  Each line of 
+.I ramapplist
+has the format:
+.sp
+dmda.out [-m "menu name"] [-t] [-c|l] [-s] [-r width,height] [-v '"arg0","arg1",...'] [-z n]
+.sp
+.IP dmda.out 20
+specifies the file name of the downloadable 630 application.  This is usually
+the same name given as arg0 for the -v option.
+.br
+.TP 
+-m "menu name"
+specifies a name for the application in the 630 button 3 More menu.  This
+option should not be used when the application has an associated host 
+side process that will call \fIdmdld(1)\fP for the application.
+.br
+.IP -t
+specifies that multiple instances of the application can run from a single
+copy in RAM.  When this option is not
+specified, each instance of the application will have its own application
+copy in RAM.
+.IP -c|l
+-c specifies that the application needs a host connection and -l specifies
+that the application can run locally in the 630. \fI630cart\fP assumes the
+application needs a host connection when neither -c nor -l is specified. 
+.IP -s
+specifies that the application will have a sweep cursor when invoked from
+the More menu.
+.IP -r
+allows the specification of a default outline for the application
+when it is invoked from the cartridge.  When -s and -r are both
+specified, a sweep cursor and default outline will be generated when
+the application is started from the More Menu.  If -r is specified
+without -s, the application will always start up in a window of
+the size specified (even if it must be reshaped).
+.IP -v
+allow the user to specify command line arguments to the application.
+Individual arguments are surrounded by double quotes and separated by
+comas and the entire argument list is enclosed in single quotes.
+.I arg0 
+defaults to 
+.I dmda.out ,
+stripped of any path name prefix, if an argument list is not specified.
+.IP "-z n"
+allow the user to override the default stack size of the 630 MTG application.
+The default stack size (2048) is selected unless \fIn\fP is greater than 2048.
+.PP
+ Each line of 
+.I romapplist
+has the format:
+.sp
+sourcefile [-m "menu name"] [-t] [-c|l] [-s] [-r width,height] [-v '"arg0","arg1",...'] [-b] [-z n]
+.sp
+.IP sourcefile 20
+specifies the source file name of the rom executable 630 application.
+Please be aware that the \fIsourcefile\fP is updated with the logic
+(C language statements) that informs the 630 operating system of the
+existence of the application in the cartridge.
+.IP
+\fImake_cart\fP, called by \fI630cart\fP, assumes that the directory
+corresponding to the prefix path name of the \fIsourcefile\fP has a
+makefile which will create the executable object.
+\fImake_cart\fP will execute the target cart_$PRGNAME in the makefile,
+where PRGNAME is created by stripping the path name prefix
+and extension (e.g. ".c") postfix from the \fIsourcefile\fP.
+If a \fIsourcefile\fP is /e10/niazi/CART/cent/Cplayer.c then the makefile
+directory and target is /e10/niazi/CART/cent and cart_Cplayer,
+respectively.
+The action of the target is:
+.RS 23
+.ft CW
+.nf
+cart_Cplayer:   $(OBJSCART)
+    $(MLD) $(MLDFLAGS) $(MLNDIR) $(DMD)/lib/crtm.o \\ 
+    $(OBJSCART) $(MLDOBJ) -ljx -lj -lfw -lc $(MTLMAP)
+.fi
+.ft R
+.RE
+.IP
+All macros except OBJSCART (dependencies that create all objects
+necessary for linking the rom executable) are supplied by \fImake_cart\fP.
+.br
+.TP 
+-m "menu name"
+specifies a name for the application in the 630 button 3 More menu.  This
+option should not be used when the application has an associated host 
+side process that will call \fIdmdld(1)\fP for the application.
+.br
+.IP -t
+specifies that multiple instances (shared text) of the application can 
+run from a single copy in ROM.
+See Chapter 10 of the 630 MTG Software Development Guide for information
+on how to write shared text applications.
+.IP -c|l
+-c specifies that the application needs a host connection and -l specifies
+that the application can run locally in the 630. \fI630cart\fP assumes the
+application needs a host connection when neither -c nor -l is specified. 
+.IP -s
+specifies that the application will have a sweep cursor when invoked from
+the More menu.
+.IP -r
+allows the specification of a default outline for the application
+when it is invoked from the cartridge.  When -s and -r are both
+specified, a sweep cursor and default outline will be generated when
+the application is started from the More Menu.  If -r is specified
+without -s, the application will always start up in a window of
+the size specified (even if it must be reshaped).
+.IP -v
+allow the user to specify command line arguments to the application.
+Individual arguments are surrounded by double quotes and separated by
+comas and the entire argument list is enclosed in single quotes.
+.I arg0 
+defaults to 
+.I sourcefile,
+stripped of any path name prefix, if an argument list is not specified.
+.IP -b
+allow the user to have the same values of the uninitialized global
+and static variables (bss section) as left by previous invocation of the
+cached application.
+According to the convention, the bss section of 630 MTG cached application
+is initialized to zero on the first invocation.
+.IP "-z n"
+allow the user to override the default stack size of the 630 MTG application.
+The default stack size (2048) is selected unless \fIn\fP is greater than 2048.
+.PP
+Each line of the
+.I fontlist
+file has the following format:
+.br
+.sp
+filename ["fontname"]
+.sp
+.IP filename 20
+specifies the file containing the font.  This font must be compatible with
+the application
+.IR loadfont(1) .
+.IP "fontname"
+is the name that will appear in the Windowproc button two font menu.
+.I filename 
+and 
+.I fontname 
+are typically the same.  If 
+.I fontname 
+is not specified, it will default to filename stripped of any path prefix.
+
+.SH CAVEATS
+Downloadable applications placed in a cartridge using 
+.I 630cart
+do not execute from cartridge EPROM.  Each application is first copied from
+EPROM to RAM, relocated and then executed.  This implementation was necessary
+to keep applications that modify their initialized data section from
+causing a "write to ROM" bus error.  All fonts, however, are maintained
+in cartridge EPROM and never copied into RAM.
+.PP
+When the -t option is specified,
+subsequent invocations of an application will execute from the copy that
+already exists in RAM.  Without the -t option, each invocation of an
+application causes a new copy to be made.  Therefore, it will save RAM when
+applications are written text shared.  For information about how to write
+text shared applications, see Chapter 10 of the 630 MTG Software Development
+Guide.
+.PP
+.I 630cart
+assumes the support programs 
+.I execram, 
+.I execrom, 
+.I cartfont, 
+.I fontconvert, 
+.I getpeid
+and 
+.I aconv
+are in your PATH variable.
+.PP
+To compile and link a source file, a shell environment variable
+\fIDMD\fP must be set to the root of the Software Development Package
+directory and exported.
+.PP
+You will need 64K by 8 EPROM's with at most a 200ns access time for
+the 630 cartridge to work properly.
+.PP
+630 cartridges have two modes of operation: overlay and append.  In the
+overlay mode, the cartridge address space overlays the base firmware
+address space.  This allows new firmware to be added to the 630 with
+out changing the EPROMS on the main logic card.  The append mode allows
+additional applications to be added to the basic firmware.  This is the
+mode required by 
+.I 630cart.
+In order to put the cartridge in the append mode, a wire strap located
+next to EPROM position 100 must be removed.  This can be done using a pair
+of wire cutters and snipping the wire strap at both ends where it is attached
+to the cartridge circuit card.
+.SH WARNINGS
+Rom executable applications must not change (write to) any initialized
+variables in the data section. Such a write will cause a "bus error"
+and consequently process exception.
+.PP
+Once an application is put into a cartridge, the contents of argv can
+no longer be modified from the \fIdmdld(1)\fP command line.  Therefore, before
+putting your applications into a cartridge, you must choose the most
+likely values for argv and specify them
+by using the -v option or modify the user interface of your application so
+that options can be changed interactively.
+.SH FILES
+.IP execram 20
+generates cartridge version of objects for the application(s) in \fIramapplist\fP
+.IP execrom
+generates cartridge version of objects for the application(s) in \fIromapplist\fP
+.IP getpeid
+extracts the programming environment identification from a object file.
+.IP cartfont
+generates cartridge version of objects for the font(s) in \fIfontlist\fP
+.IP fontconvert
+generates C language files for the font(s) in \fIfontlist\fP
+.IP make_cart
+link loads all cartridge object files to the cartridge address space
+and calls aconv to produce INTEL HEX EPROM images.
+.IP aconv
+Program to create INTEL HEX EPROM images.

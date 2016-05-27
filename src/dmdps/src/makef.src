@@ -1,0 +1,43 @@
+include ../../stand.defs
+
+all: dmdfmt dmdscale dmdfconv dmdrot90
+
+#install: all
+#	cp dmdfmt dmdscale dmdfconv dmdrot90 $(DMD)/bin
+#
+#clean: 
+#	rm -f dmdfmt dmdscale dmdfconv dmdrot90 *.o
+
+ct: 
+	for i in dmdio.c dmdfmt.c dmdscale.c dmdfconv.c dmdrot90.c ; \
+	do ctrace < $$i > ctrace.d/$$i ; \
+	done ; \
+	cd ctrace.d ; make 
+
+dmdio.o: dmdio.c bit_h.h udmd.h
+	$(CC) $(CFLAGS) -c dmdio.c
+
+dmdfconv.o: dmdfconv.c bit_h.h udmd.h
+	$(CC) $(CFLAGS) -c dmdfconv.c
+
+dmdscale.o: dmdscale.c bit_h.h impress.h udmd.h
+	$(CC) $(CFLAGS) -c dmdscale.c
+
+dmdfmt.o: dmdfmt.c bit_h.h impress.h udmd.h
+	$(CC) $(CFLAGS) -c dmdfmt.c
+
+dmdrot90.o: dmdrot90.c bit_h.h udmd.h
+	$(CC) $(CFLAGS) -c dmdrot90.c
+
+dmdfconv: dmdfconv.o dmdio.o
+	$(CC) -o dmdfconv dmdfconv.o dmdio.o $(CFLAGS)
+
+dmdscale: dmdscale.o dmdio.o
+	$(CC) -o dmdscale dmdscale.o dmdio.o $(CFLAGS)
+
+dmdfmt: dmdfmt.o dmdio.o
+	$(CC) -o dmdfmt dmdfmt.o dmdio.o $(CFLAGS)
+
+dmdrot90: dmdrot90.o dmdio.o
+	$(CC) -o dmdrot90 dmdrot90.o dmdio.o $(CFLAGS)
+

@@ -1,0 +1,325 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+'\" t
+.fp 2 CW
+.lg 0
+.TH DMDPS 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdps \- graphics/text printer support for Teletype 5620 DMD
+and 630 MTG terminals 
+.SH SYNOPSIS
+.I dmdps
+{-T printer type}
+[\fB-P\fP]
+[\fB-7\fP | \fB-8\fP]
+[\fB-9600\fP | \fB-4800\fP | \fB-1200\fP]
+[\fB-f\fP file name]
+[\fB-c\fP pipe command]
+.SH DESCRIPTION
+.PP
+.I Dmdps 
+is a layers based program that runs under 
+.I jx
+to provide general support for text and bitmap output
+on 5620 DMD and 630 MTG terminals. 
+When 
+.I dmdps
+is called, it loads itself into the terminal, and it waits for the user to
+select a bitmap or for input to be supplied via the 
+.I dmdpr
+command. 
+The available bitmap sources are found on the button 3 menu:
+.sp
+.TS
+center, box;
+lF2.
+read bitmap
+choose layer
+whole screen
+sweep rectangle
+.TE
+.in +.5i
+.ll -.5i
+.sp
+Selecting 
+.I "read bitmap"
+will read the source bitmap from a host file.
+You will be prompted for the name of the file.
+.sp
+Selecting 
+.I "choose layer"
+will change the mouse icon to the target icon, 
+and you will be asked to point at the layer
+to print and to click button 3. 
+.sp
+Selecting 
+.I "whole screen"
+will select the whole screen. 
+.sp
+Selecting 
+.I "sweep rectangle"
+will change the mouse icon to the
+box cursor, and you will be asked to sweep a rectangle around
+the area to print.
+.ll +.5i
+.in -.5i
+.sp
+.PP
+In the 
+.I dmdps
+layer, you can tell what button does what by 
+looking at the graphical display running across the top
+of the layer. 
+The leftmost box is used to indicate the
+function of button 1; the middle box, the function of button 2; and the third
+box over indicates button 3 function. 
+Icons representing button actions/functions appear in these boxes.
+The two other boxes send line feeds or form feeds to the printer 
+port when button 1 is pressed while being positioned over them. 
+The bottom of the 
+.I dmdps
+layer is a text display line that shows prompts and all typed input. 
+The middle portion of the layer shows the selected bitmap.
+.PP
+When you successfully select a bitmap, it is displayed in the
+.I dmdps 
+layer.
+You can then perform an image operation on the bitmap (bttn3), 
+or output the bitmap (bttn2).
+Here are the possible contents of the button 2 output and the
+button 3 image operations menus:
+.sp
+.TS
+center;
+| lF2 | lF2 | lF2 |.
+_		_
+write bitmap		options...
+pipe  bitmap		make a copy
+[ print bitmap ]		flip stipple 
+		reverse video
+		inset rectangle
+		[ run / halt ]
+_		_
+.TE
+.in +.5i
+.ll -.5i
+.sp
+The 
+.I "print bitmap"
+option will format and print the selected bitmap on
+the DMD-attached printer.
+If the "hex debug dump" flag is turned set,
+a hex dump of the formatted output is produced for debugging 
+purposes. This will only appear if a printer name was provided
+on the command line.
+.sp
+The 
+.I "pipe bitmap"
+option will present a shell pipeline which
+can be edited by backspacing and typing, or used as is by 
+pressing button 3. The pipeline will be fed a run
+encoded bitmap image. 
+.sp
+The 
+.I "write bitmap"
+operation works just like 
+.I "pipe bitmap"
+does, except that it writes the encoded bitmap to a host file.
+.sp
+The 
+.I option... 
+selection causes the button 2 menu to be temporarily replaced
+by an options menu.
+.sp
+The
+.I "make a copy"
+operation clones the selected image in off-screen memory, if possible.
+.sp
+The
+.I "flip stipple"
+operation flips any stipples in the selected bitmap.
+Stipples were used in early versions of the 5620 DMD software
+to indicate non-current layers.
+.sp
+The
+.I "reverse video"
+operation reverses the video of the selected bitmap.
+.sp
+Every selection of the
+.I "inset rectangle"
+operation will mask off four border pixels from
+the selected bitmap. 
+This is used to make borderless pictures of layers.
+.sp 
+The
+.I halt
+operation allows you to halt an active layer before printing.
+This item will only appear if you choose a layer other than
+the dmdps layer.
+.I
+The
+.I run
+operation restores the layer.
+.ll +.5i
+.in -.5i
+.sp
+Anything you do to an on-screen bitmap, such as reversing its video
+or halting its associated process, will be restored 
+after the layers image has been spooled in memory, or when
+you select a new bitmap.
+.SH OTHER FEATURES
+.I dmdps 
+reads its host stdin looking for work for the printer -
+.I dmdpr 
+forwards its own stdin to the xt device of the most
+recently loaded 
+.I dmdps 
+process. 
+Thus
+.I dmdps 
+and 
+.I dmdpr 
+work together to
+form a host pipeline sink. Any kind of data suitable
+for the dmd attached printer can be sent down the sink -
+including formatted bitmap images, plain ascii text, and
+printer-specific escape sequences.
+.PP
+.I dmdps 
+also looks to see if anything is typed at the keyboard
+while it it selected. If so, the keyboard input is sent to
+the attached printer. This is a easy way to test a printer
+connection, to jot down phone numbers, or to send printer escape
+codes to change print modes.
+.SH OPTIONS
+The following command line options are understood by
+.I dmdps:
+.TP
+.BI -P
+This tells 
+.I dmdps 
+to use Kaplan's parallel
+centronics port board. This option should be used only if the 
+board is attached, otherwise your terminal may crash. 
+.sp
+When using this board you will want to have your printer
+powered off if the 
+.I dmdps 
+driver is not running. 
+Powering on your terminal with the board installed and the 
+printer turned on will hang the terminal with a message about
+a stray interrupt. Turn off the printer and try again.
+.TP
+.BI -c " pipe command"
+command to be piped to if the 
+.I "pipe bitmap" 
+menu item is selected. If present, this item must appear last.
+.TP
+.BI -f " file name"
+name of file to put bitmap in if the 
+.I "write bitmap" 
+menu item is selected.
+(Defaults to BLITMAP.)
+.TP
+.BI -T " printer type"
+type of printer to format bitmap for if the 
+.I "print bitmap" 
+menu item is selected.
+The dmdps shell script has built-in printer formatting descriptions (pfd's)
+for at least the following printers:
+hpink.epson (Thinkjet in Epson mode), 
+8510b (C.Itoh 8510b), 
+t5310 (Teletype 5310 w/old ROMs), 
+t5310aab (Teletype 5310 w/new ROMs), 
+rx80 (Epson RX-80), 
+or hpink (Thinkjet in native mode.) 
+If you present dmdps with a printer name that begins with /, 
+dmdps will interpret this as the pfd file name. 
+If you ask for the printer type "switches", dmdps will print out the
+switch settings for all supported printers.
+.TP
+.BI -7 | -8 
+Selects either a 7 bit byte with odd parity or an 8 bit byte with
+even parity for output over the 5620 DMD serial printer port.
+(defaults to 7 bits for the T5300 and HPink printers, 
+and 8 bits for the others.)
+.TP
+.BI -9600 | -4800 | -1200
+Selects data output rate for the 5620 DMD serial printer port.
+(defaults to 9600 bps for the HPink, 4800 bps for the others.)
+.SH EXAMPLES
+.sp
+dmdps -T switches
+.PP
+The above command will cause dmdps to print out the switch settings
+for all supported printers.
+.sp
+dmdps -P -Thpink
+.PP
+The above command loads the parallel port version
+of the dmdps program, and initializes the formatter 
+for HP inkjet output.
+.sp 2
+dmdps -c "dmdscale -h 3 -w 3 | i300 -l bitmap -d ihXXX"
+.PP
+The above command loads dmdps and preloads the 
+.I "pipe bitmap" 
+menu entry to send bitmaps to the Imagen 8/300 printer 
+at rje destination ihXXX.
+.sp 2
+dmdps -c "dmdfmt -p | lpr -b"
+.PP
+The above command loads dmdps with
+.I "pipe bitmap"
+preloaded to send bitmaps to a printronix printer.
+.sp 2
+dmdps -c "dmdfmt -e | dmdpr -u root"
+.PP
+The above command preloads the "pipe bitmap"
+command to format a bitmap for an Epson printer
+and forward it to user root's attached DMD printer.
+.sp 2
+dmdps -T rx80 -f ${HOME}/.bitmap
+.PP
+The above command will default the print bitmap format to
+the Epson RX-80, and will default the output file name to
+${HOME}/.bitmap.
+.sp 2
+dmdpr < file
+.PP
+The above command will print the file if dmdps is running.
+.PP
+.I dmdps
+runs only under
+.IR layers (1).
+.SH "FILES"
+.ta \w'${HOME}/rje/.prtty    'u
+${HOME}/rje	this directory must allow write permission to "all".
+.br
+${HOME}/rje/.prtty	xt-tty of dmdps process.
+.SH "BUGS"
+You cannot use the 
+.I "pipe bitmap" 
+option to send a bitmap to the
+host, format it, and send it back to the terminal all in one step.
+You can 
+.I "write bitmap" 
+first, and later format and download it.
+The printer port on the 5620 DMD is write-only and cannot
+perform any kind of handshaking with the attached printer.
+This precludes the ability to do flow-control. This
+software attempts to patch around this problem, but does so
+at the expense of printing speed. When running the printer
+port at 9600 bps, all requests to ring the bell will be sent
+to the printer port. If this happens during bitmap output,
+the picture will get mangled.
+.SH "SEE ALSO"
+.IR "dmdfmt(1), dmdscale(1), dmdpr(1), layers(1)."

@@ -1,0 +1,52 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.if \nZ \{\
+.TH XZAP630 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH ZAP630 1 TOOLCHEST\}
+.SH NAME
+zap630 - used with \fImc68conv\fP for object file conversion
+.SH SYNOPSIS
+\fBzap630\fR [\fB-f\fP] [\fB-V\fP] objectfiles
+.SH DESCRIPTION
+\fIzap630\fP should be used with \fImc68conv\fP when converting a 630 MTG 
+[Motorola 68000 family
+(MC68000)] object file to run on a host with a different byte ordering architecture.
+For example, the conversion of a 630 MTG MC68000 object file from a
+3B to a VAX host will require the use of \fIzap630\fP along with \fImc68conv\fP.
+.P
+When converting a 630 MTG object file to a host with a different byte ordering
+architecture, the \fImc68conv\fP command (\fIused to swap the words for each
+pair of contiguous words in the object file\fP) "damages" a downloader
+parameter of the file (the application's stack size). \fIzap630\fP is used
+to repair this "damage."
+.P
+Newer versions of \fIdmdld\fP (2.1 or greater) also look for the "damage"
+and will repair it at download time, but \fIzap630\fP is provided for
+compatibility with older versions of \fIdmdld\fP.
+.P
+Normally \fIzap630\fP will do the conversion only when the parameter 
+appears to be of an unreasonable size (less than 0x10 or greater than 0x100000).
+The \fB-f\fP option forces \fIzap630\fP to do the swap anyway.
+.P
+The \fB-V\fP option causes \fIzap630\fP to print a message that
+identifies which version it is.
+.P
+\fIzap630\fP can be used either on the source or on the destination host.
+When used on the source host, \fIzap630\fP \fB-f\fP should be used before the
+\fImc68conv\fP command for successful conversion of a 630 MTG object
+file.
+When used on the destination host, \fIzap630\fP should be used after
+the \fImc68conv\fP command for successful conversion of a 630 MTG object
+file.
+One can also successfully convert the 630 MTG object file by
+using \fImc68conv\fP on the source host followed by using \fIzap630\fP on 
+the destination host.
+.SH SEE ALSO
+mc68conv(1) in the \fI630 MTG Software Reference Manual\fP

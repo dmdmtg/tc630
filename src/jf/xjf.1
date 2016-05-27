@@ -1,0 +1,291 @@
+.\" @(#)xjf.1	1.1.1.2 90/06/20 10:35:42
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.ds ZZ TEXT AND GRAPHICS PACKAGE
+.if \nZ \{\
+.TH XJF 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH JF 1 TOOLCHEST\}
+.SH NAME
+jf \- DMD font editor
+.SH SYNOPSIS
+\fIjf\fP [ \fB-Vc\fP ] [ file ]
+.SH DESCRIPTION
+The \fIjf\fP utility is a menu driven font editor for AT&T
+Dot-Mapped Display terminals (5620 DMD and 630 MTG).  It reads and
+writes font files in the form specified in the 630 MTG Software
+Development Guide. 
+.P
+The \fB-V\fP option causes \fIjf\fP to print a message that
+identifies which version it is.
+.P
+The \fB-c\fP option, for "cache", is available only for the
+630 MTG.  It causes \fIjf\fP to remain in the terminal's RAM memory
+after the program terminates.  The next invocation of \fIjf\fP will
+bring up the program quickly without having to download it.  Use the
+630 MTG \fIucache(1)\fP program to remove \fIjf\fP from the
+terminal's cache.
+.P
+The \fBfile\fP argument specifies a font file to be preloaded.
+.P
+Button 1 of the mouse is used for selecting character cells for
+editing.  Button 2 is used for returning character cells to their
+font.  Note that both button 1 and 2 select character cells from
+within a font display graphic.  That is, button 2 has effect only
+when used to select the "tiny" character cell, not the large edit
+cell which represents the character when distended (\fIzoomed\fP). 
+Zoomed character cells are also referred to as \fIedit cells\fP.
+.SS Button Three Menu
+All \fIjf\fP commands are entered from button 3 of the mouse.  The menu
+for button 3 supports the following operations:
+.TP
+\fBchar\fP
+This menu entry allows certain parameters to be set
+for character cells on a per-cell basis.
+.IP
+To adjust any of these character cell parameters (except for \fBchar
+width\fP), select the desired sub-menu entry, and place the
+resultant bullseye over the edit cell to be adjusted. 
+Once the character is selected, the current value of the parameter
+will be displayed in the keyboard entry area at the bottom of the
+window, and \fIjf\fP will wait for keyboard input.  Merely entering a
+newline will leave the parameter unchanged. 
+.RS
+.TP
+\fBchar width\fP
+This parameter specifies how much space should be allocated by
+the display device for the given character.  This is only relevant
+for variable-width fonts.
+.IP
+To adjust the width of a character, select the \fBchar width\fP
+menu selection, and place the resultant icon over the character to be
+adjusted.  Button 1 resets the width indicator to 0.  Button 2 places
+the width indicator in the column indicated by the heavier bar of the
+icon.
+.TP
+\fBchar left\fP
+This parameter specifies how much space the given character can
+be tucked under the proceeding character when the display
+device supports \fIkerning\fP.
+.TP
+\fBchar top\fP
+This parameter specifies how far down from the top of the character
+cell that the data bits of the given character actually start.
+For example, the top parameter will be much larger for a small 'a'
+than it will be for a large 'A'.  Precisely, it is the number of
+blank raster lines that lie above the character in the cell.
+.TP
+\fBchar bottom\fP
+This parameter specifies how far down from the top of the character
+cell that the data bits of the given character actually extend.
+For example, the bottom parameter will be much larger for a small
+ 'g' than it will be for a large 'G'.  Precisely, it is the number of
+raster lines that lie above the blank lines at the bottom of the
+cell.
+.RE
+.TP
+\fBfont\fP
+This menu entry allows certain parameters to be set
+for fonts on a per-font basis.
+.IP
+To adjust any of the font parameters (except for \fBhollow font\fP),
+select the desired sub-menu entry, and place the resultant bullseye
+over the font to be adjusted.  Once the character is selected, the
+current value of the parameter will be displayed in the keyboard
+entry area at the bottom of the window, and \fIjf\fP will wait for
+keyboard input.  Merely entering a newline will leave the parameter
+unchanged. 
+.RS
+.TP
+\fBmax width\fP
+This parameter determines how many bit positions character cells
+have in the horizontal direction.  This value represents the maximum
+character width limit for a font.
+.TP
+\fBall widths\fP
+This parameter determines how many bits per character
+\fIconstant width fonts\fP
+are allocated.  Note that setting this parameter eliminates all
+variable width information stored with the font.
+.TP
+\fBnchars\fP
+This parameter determines how many character cells a font contains.
+.TP
+\fBheight\fP
+This parameter determines how many bit positions character cells
+have in the vertical direction.  This value represents the maximum
+character height limit for a font.
+.TP
+\fBascent\fP
+This parameter determines the position of the \fIbase line\fP of the
+font.  This is the line on which most characters rest that is
+used to position characters to one another.  To be precise,
+\fBascent\fP is the number of blank lines above the base line.
+.TP
+\fBhollow font\fP
+This menu selection is reputed to actually represent an operation:
+According to folklore, it would take a stout font, and hollow it out.
+The provider assumes no responsibility for the foolhardy.
+.RE
+.TP
+\fBbit\fP
+This menu entry allows certain operations to be performed on edit
+cells.
+.RS
+.TP
+\fBmove hor\fP
+This operation allows a character cell to be rotated either left
+(button 1) or right (button 2).
+.TP
+\fBmove ver\fP
+This operation allows a character cell to be rotated either up
+(button 1) or down (button 2).
+.TP
+\fBflip\fP
+This operation allows a character cell to be reflected around either
+its vertical axis (button 1) or its horizontal axis (button 2).
+.TP
+\fBtranspose\fP
+This operation has an undetermined effect of the edit cell.
+.RE
+.IP
+The following four operations allow intercellular bit manipulations.
+After the operation is selected, the \fIsource\fP character cell must
+be selected by depressing button 3.  Before the button is released,
+however, the \fIdestination\fP character cell must also be selected, by
+placing the bullseye over it and finally releasing.  The
+indicated operation is then performed.
+.RS
+.TP
+\fBcopy\fP
+All the bits in the source cell are copied to the
+destination cell.  The entire previous contents of the
+destination cell are overwritten.
+.TP
+\fBor\fP
+All the bits in the source cell are \fIor\fP-ed with the contents of
+the destination cell.  The result replaces the destination cell.
+.TP
+\fBclear\fP
+All the bits in the source cell are inverted, and then \fIand\fP-ed
+with the contents of the destinations cell.  The result replaces the
+destination cell.
+If the source and destination cells are identical, the contents of the
+cell are cleared.
+.TP
+\fBxor\fP
+All the bits in the source cell are exclusive-\fIor\fP-ed with the
+contents of the destination cell.  The result replaces the destination
+cell.
+.RE
+.TP
+\fBmove\fP
+This menu entry allows either fonts or edit cells to be moved around
+within the \fIjf\fP window.  After selecting \fBmove\fP, place the
+resultant bullseye over the display graphic to be moved, depress button 3,
+move the icon to the new location, and release the button.
+.TP
+\fBclose\fP
+This menu entry selects an operation that can be used either for fonts
+or edit cells.  When applied to edit cells, it causes the
+cell to be returned to its font, just like button 2 does when
+a "tiny" character cell is selected.  When
+applied to a font, \fBclose\fP causes \fIall\fP outstanding edit
+cells of that font to be returned.  Furthermore, it compresses the font,
+so that all unused space is removed.  This is currently the only way to
+compress the unused space out of a font.
+.TP
+\fBread\fP
+This menu entry is the primary way existing fonts are edited.
+.RS
+.TP
+\fBblit font\fP
+This menu entry allows a font of the form described in the 630 MTG
+Software Development Guide to be read by \fIjf\fP.
+.TP
+\fBcanon font\fP
+This menu entry is unsupported.
+.RE
+.TP
+\fBwrite\fP
+This menu entry is used to write edited fonts to mass storage.
+.RS
+.TP
+\fBblit font\fP
+This menu entry causes a font of the form described in the 630 MTG
+Software Development Guide to be written by \fIjf\fP.
+.TP
+\fBcanon font\fP
+This menu entry is unsupported.
+.TP
+\fBicon\fP
+This menu entry can be used to write a single character cell to a file
+that can be included in a C program.  The character cell must be
+\fIzoomed\fP.
+.RE
+.TP
+\fBnew font\fP
+This menu entry creates an empty font of 16 characters, each of which
+is 16 X 16 bits in size.  It can be used to start building a font from
+scratch, although it is usually easier to take one that already exists
+and modify it to the new requirements.
+.TP
+\fBdelete font\fP
+This menu entry can be used to clean up the \fIjf\fP window.
+.TP
+\fBexit\fP
+.SS Font File Inconsistencies
+There has been some confusion on the exact definition of the font 
+file format used by AT&T Dot-Mapped Display terminals.
+\fIjf\fP uses the format described in the 630 MTG
+Software Development Guide.
+.P
+The first data item in DMD font files is called \fInchars\fP, which
+represents exactly the number of characters contained in the font. 
+Some versions of \fIjf\fP's ancestor \fIjf\fP assumed that
+\fInchars\fP was a number \fIone greater\fP than the actual number of
+characters stored in the font.   The result of this discrepancy is
+that fonts written by these older versions will display one extra
+character cell when read by \fIjf\fP.  Furthermore, when fonts that
+have been written by \fIjf\fP are read by these version of \fIjf\fP,
+the last character cell of the font will not be displayed.
+.P
+These discrepancies are no cause for concern.  The \fInchars\fP value
+can be changed from the \fBfont\fP sub-menu, if desired, or it can be
+left unchanged for compatibility between the two versions.
+Sometimes the \fImax width\fP value (which is stored in the
+\fInchar\fP+1th position of the font file) is mis-read for these
+older fonts.  In that case, the correct value can also be entered
+from the \fBfont\fP sub-menu.
+.if \nZ \{\
+.SH FILES
+.ta \w'$TOOLS/lib/630/xjf.m  'u
+$TOOLS/lib/dmdtools/xjf	host support for \fIxjf\fP
+.br
+$TOOLS/lib/630/xjf.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xjf.m	terminal support for the 5620 DMD
+.br
+$TOOLS/lib/xfont/*		fonts\}
+.DT
+.SH SEE ALSO
+630 MTG Software Development Guide.
+.br
+ucache(1) in the \fI630 MTG Software Reference Manual.
+.SH BUGS
+The "hollow font" feature is untested.
+.br
+The "canon font" feature is unsupported.
+.br
+Closing a font before writing it will give a more compressed font
+file than is created when the font is not closed first.
+.br
+When \fIjf\fP is cached, the \fBfile\fP argument is only effective
+on the initial download.  Furthermore, this file will be loaded
+with every subsequent invocation.

@@ -1,0 +1,60 @@
+include ../../stand.defs
+
+all: dmdps.m
+
+showbitmap.o: ../src/showbitmap.c ../src/defs.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/showbitmap.c
+
+put.o: ../src/put.c 
+	$(MCC) $(MCFLAGS) -c ../src/put.c
+
+printbmap.o: ../src/printbmap.c ../src/defs.h ../src/dmdps.h ../src/pfd.h ../src/printer.h
+	$(MCC) $(MCFLAGS) -c ../src/printbmap.c
+
+newsend.o: ../src/newsend.c ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/newsend.c
+
+newread.o: ../src/newread.c ../src/bit_h.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/newread.c
+
+sendbitmap.o: ../src/sendbitmap.c ../src/defs.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/sendbitmap.c
+
+readbitmap.o: ../src/readbitmap.c ../src/bit_h.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/readbitmap.c
+
+readpfd.o: ../src/readpfd.c ../src/pfd.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/readpfd.c
+
+dumper.o: ../src/dumper.c ../src/printer.h
+	$(MCC) $(MCFLAGS) -c ../src/dumper.c
+
+print630.o: ../src/print630.c ../src/dmdps.h ../src/pfd.h
+	$(MCC) $(MCFLAGS) -c ../src/print630.c
+
+thinkchar.o: ../src/thinkchar.s ../src/think.h ../src/intrpcbs.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/thinkchar.s
+
+tiles.o: ../src/tiles.c ../src/dmdps.h ../src/icon/tile_a ../src/icon/tile_b ../src/icon/tile_c ../src/icon/tile_d ../src/icon/tile_e ../src/icon/tile_f ../src/icon/mouse1 ../src/icon/mouse2 ../src/icon/mouse3 ../src/icon/blank ../src/icon/f1 ../src/icon/f2 ../src/icon/l1
+	$(MCC) $(MCFLAGS) -c ../src/tiles.c
+
+doUNIXwork.o: ../src/doUNIXwork.c ../src/defs.h ../src/dmdps.h ../src/printer.h
+	$(MCC) $(MCFLAGS) -c ../src/doUNIXwork.c
+
+dmdps.o: ../src/dmdps.c ../src/defs.h ../src/dmdps.h ../src/pfd.h ../src/printer.h ../src/icons.h ../src/menus.h ../src/icon/deadmouse ../src/icon/menu3 ../src/icon/sweepcursor ../src/icon/target ../src/icon/copier ../src/icon/cross ../src/icon/stiptext ../src/icon/thumbsup ../src/icon/thumbsdown ../src/icon/menu2
+	$(MCC) $(MCFLAGS) -c ../src/dmdps.c
+
+dmdps.m: dmdps.o sendbitmap.o printbmap.o print630.o tiles.o parse_args.o doUNIXwork.o readpfd.o readbitmap.o dumper.o newread.o newsend.o put.o showbitmap.o
+	$(MCC) $(MCFLAGS) dmdps.o sendbitmap.o print630.o printbmap.o tiles.o dumper.o doUNIXwork.o parse_args.o readpfd.o readbitmap.o newread.o newsend.o put.o showbitmap.o -o dmdps.m
+
+parse_args.o: ../src/parse_args.c ../src/defs.h ../src/dmdps.h
+	$(MCC) $(MCFLAGS) -c ../src/parse_args.c
+
+#install: all
+#	mv dmdps.m $(DMD)/lib/dmdps.m
+#
+#clean:
+#	rm -f *.o
+#
+#clobber: clean
+#	rm -f *.m 

@@ -1,0 +1,76 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.ds ZZ CORE PACKAGE
+.if \nZ \{\
+.TH XSYSMON 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH SYSMON 1 TOOLCHEST\}
+.SH NAME
+sysmon \- monitor system activity
+.SH SYNOPSIS
+\fBsysmon\fP [\fB-Vs\fP] [\fIseconds\fP]
+.SH DESCRIPTION
+The
+.I sysmon
+command
+monitors the activity level of the user's \s-1UNIX\s+1 operating system.
+It runs on AT&T Dot-Mapped Display terminals (5620 DMD and 630 MTG).  
+The terminal must be
+operating in the layers environment before downloading \fIsysmon\fP
+[see \fIlayers(1)\fP].
+.PP
+At the top of the layer is an undulating bar
+with four different textured portions (from left to right):
+.TP 25
+\fBsolid texture\fP
+represents user time
+.TP
+\fBcoarse texture\fP
+represents kernel time
+.TP
+\fBfine texture\fP
+represents wait time
+.TP
+\fBinverse solid texture\fP 
+represents idle time
+.PP
+Directly below the bar to the left is the time-of-day.
+The number following the time-of-day is the number of jobs ready to be run.
+The last number is the increase or decrease in the number of jobs
+ready to be run since the last time it was printed.
+When new mail arrives, the login id of the sender is printed to the
+right of these numbers and the keyboard bell rings.
+.SH OPTIONS
+Presently there are 3 options:
+.br
+.TP 9
+.B -V
+causes \fIsysmon\fP to print a message that
+identifies which version it is.
+.TP 9
+.B -c
+specifies that \fIsysmon\fP is to be stored in the terminal's application
+cache.  It is only available for the 630 MTG.
+.TP 9
+.B -s
+prints the subject line of new mail along with its sender id
+.TP 9
+.I "seconds"
+number of seconds to sleep between updates; default is 3.
+.if \nZ \{\
+.SH FILES
+.ta 3i
+$TOOLS/lib/dmdtools/xsysmon	host support for \fIxsysmon\fP
+.br
+$TOOLS/lib/630/xsysmon.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xsysmon.m	terminal support for the 5620 DMD\}
+.SH SEE ALSO
+layers(1), time(2) in the
+\f2\s-1UNIX\s+1 System V Programmer Reference Manual\f1.

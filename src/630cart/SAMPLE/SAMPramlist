@@ -1,0 +1,3 @@
+/e13/jrg/DEMO/LASTEROIDS/lasteroids -m "Asteroids" -l -s -r 1000,1000
+/usr/add-on/630/lib/loadfont.m -t -c 
+/usr/exptools/lib/630/xcip.m -c -v '"xcip.m","/usr/add-on/630/font"'

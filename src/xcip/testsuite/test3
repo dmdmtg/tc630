@@ -1,0 +1,742 @@
+.nf
+.PS
+scale=100
+define t557 |
+[ box invis ht 34 wid 58 with .sw at 0,0
+"\fR\s5\&Send for  \f1\s0" at 29,29
+"\fR\s5\&review by \f1\s0" at 29,21
+"\fR\s5\&installing  \f1\s0" at 29,13
+"\fR\s5\&on ihlpb  \f1\s0" at 29,5
+] |
+
+define t558 |
+[ box invis ht 30 wid 56 with .sw at 0,0
+"\fR\s5\&Review   \f1\s0" at 28,25
+"\fR\s5\&for design\f1\s0" at 28,15
+"\fR\s5\&document \f1\s0" at 28,5
+] |
+
+define t559 |
+[ box invis ht 20 wid 56 with .sw at 0,0
+"\fR\s5\&Design   \f1\s0" at 28,15
+"\fR\s5\&document \f1\s0" at 28,5
+] |
+
+define t560 |
+[ box invis ht 20 wid 38 with .sw at 0,0
+"\fR\s5\&Tear  \f1\s0" at 19,15
+"\fR\s5\&review\f1\s0" at 19,5
+] |
+
+define t561 |
+[ box invis ht 40 wid 46 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 23,35
+"\fR\s5\&bringup \f1\s0" at 23,25
+"\fR\s5\&for EX2\f1\s0" at 23,15
+"\fR\s5\&& ML3 \f1\s0" at 23,5
+] |
+
+define t562 |
+[ box invis ht 40 wid 46 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 23,35
+"\fR\s5\&bringup \f1\s0" at 23,25
+"\fR\s5\&for EX2\f1\s0" at 23,15
+"\fR\s5\&& ML3 \f1\s0" at 23,5
+] |
+
+define t563 |
+[ box invis ht 40 wid 48 with .sw at 0,0
+"\fR\s5\&Build   \f1\s0" at 24,35
+"\fR\s5\&ODD   \f1\s0" at 24,25
+"\fR\s5\&for EX2\f1\s0" at 24,15
+"\fR\s5\&& ML3 \f1\s0" at 24,5
+] |
+
+define t564 |
+[ box invis ht 40 wid 48 with .sw at 0,0
+"\fR\s5\&Build   \f1\s0" at 24,35
+"\fR\s5\&ODD   \f1\s0" at 24,25
+"\fR\s5\&for EX2\f1\s0" at 24,15
+"\fR\s5\&& ML3 \f1\s0" at 24,5
+] |
+
+define t565 |
+[ box invis ht 40 wid 48 with .sw at 0,0
+"\fR\s5\&Build   \f1\s0" at 24,35
+"\fR\s5\&ODD   \f1\s0" at 24,25
+"\fR\s5\&for EX2\f1\s0" at 24,15
+"\fR\s5\&& ML3 \f1\s0" at 24,5
+] |
+
+define t566 |
+[ box invis ht 50 wid 48 with .sw at 0,0
+"\fR\s5\&Prepare \f1\s0" at 24,45
+"\fR\s5\&EX2 & \f1\s0" at 24,35
+"\fR\s5\&ML3   \f1\s0" at 24,25
+"\fR\s5\&design  \f1\s0" at 24,15
+"\fR\s5\&package \f1\s0" at 24,5
+] |
+
+define t567 |
+[ box invis ht 50 wid 48 with .sw at 0,0
+"\fR\s5\&Prepare \f1\s0" at 24,45
+"\fR\s5\&EX2 & \f1\s0" at 24,35
+"\fR\s5\&ML3   \f1\s0" at 24,25
+"\fR\s5\&design  \f1\s0" at 24,15
+"\fR\s5\&package \f1\s0" at 24,5
+] |
+
+define t594 |
+[ box invis ht 40 wid 46 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 23,35
+"\fR\s5\&bringup \f1\s0" at 23,25
+"\fR\s5\&for EX2\f1\s0" at 23,15
+"\fR\s5\&& ML3 \f1\s0" at 23,5
+] |
+
+define t595 |
+[ box invis ht 50 wid 50 with .sw at 0,0
+"\fR\s5\&Final   \f1\s0" at 25,45
+"\fR\s5\&ODD   \f1\s0" at 25,35
+"\fR\s5\&build   \f1\s0" at 25,25
+"\fR\s5\&and test \f1\s0" at 25,15
+"\fR\s5\&on EES \f1\s0" at 25,5
+] |
+
+define t596 |
+[ box invis ht 20 wid 38 with .sw at 0,0
+"\fR\s5\&Data  \f1\s0" at 19,15
+"\fR\s5\&freeze \f1\s0" at 19,5
+] |
+
+define t597 |
+[ box invis ht 40 wid 48 with .sw at 0,0
+"\fR\s5\&Build   \f1\s0" at 24,35
+"\fR\s5\&ODD   \f1\s0" at 24,25
+"\fR\s5\&for EX2\f1\s0" at 24,15
+"\fR\s5\&& ML3 \f1\s0" at 24,5
+] |
+
+define t598 |
+[ box invis ht 40 wid 48 with .sw at 0,0
+"\fR\s5\&Build   \f1\s0" at 24,35
+"\fR\s5\&ODD   \f1\s0" at 24,25
+"\fR\s5\&for EX2\f1\s0" at 24,15
+"\fR\s5\&& ML3 \f1\s0" at 24,5
+] |
+
+define t625 |
+[ box invis ht 20 wid 26 with .sw at 0,0
+"\fR\s5\&SLE\f1\s0" at 13,15
+"\fR\s5\&Dart\f1\s0" at 13,5
+] |
+
+define t626 |
+[ box invis ht 20 wid 40 with .sw at 0,0
+"\fR\s5\&Switch \f1\s0" at 20,15
+"\fR\s5\&Trans \f1\s0" at 20,5
+] |
+
+define t627 |
+[ box invis ht 40 wid 52 with .sw at 0,0
+"\fR\s5\&Quality  \f1\s0" at 26,35
+"\fR\s5\&Fund    \f1\s0" at 26,25
+"\fR\s5\&for area \f1\s0" at 26,15
+"\fR\s5\&55      \f1\s0" at 26,5
+] |
+
+define t628 |
+[ box invis ht 30 wid 58 with .sw at 0,0
+"\fR\s5\&Intro     \f1\s0" at 29,25
+"\fR\s5\&to AT&T \f1\s0" at 29,15
+"\fR\s5\&Operations\f1\s0" at 29,5
+] |
+
+define t629 |
+[ box invis ht 20 wid 42 with .sw at 0,0
+"\fR\s5\&Switch \f1\s0" at 21,15
+"\fR\s5\&Arch.  \f1\s0" at 21,5
+] |
+
+define t630 |
+[ box invis ht 30 wid 40 with .sw at 0,0
+"\fR\s5\&One   \f1\s0" at 20,25
+"\fR\s5\&Day   \f1\s0" at 20,15
+"\fR\s5\&Aware \f1\s0" at 20,5
+] |
+
+define t631 |
+[ box invis ht 20 wid 32 with .sw at 0,0
+"\fR\s5\&Shell \f1\s0" at 16,15
+"\fR\s5\&Lang.\f1\s0" at 16,5
+] |
+
+define t632 |
+[ box invis ht 20 wid 40 with .sw at 0,0
+"\fR\s5\&AA   \f1\s0" at 20,15
+"\fR\s5\&meeting\f1\s0" at 20,5
+] |
+
+define t633 |
+[ box invis ht 40 wid 54 with .sw at 0,0
+"\fR\s5\&Unix    \f1\s0" at 27,35
+"\fR\s5\&System   \f1\s0" at 27,25
+"\fR\s5\&Doc.    \f1\s0" at 27,15
+"\fR\s5\&Macros  \f1\s0" at 27,5
+] |
+
+define t634 |
+[ box invis ht 20 wid 70 with .sw at 0,0
+"\fR\s5\&Software    \f1\s0" at 35,15
+"\fR\s5\&Architecture \f1\s0" at 35,5
+] |
+
+define t689 |
+[ box invis ht 50 wid 74 with .sw at 0,0
+"\fR\s5\&Complete    \f1\s0" at 37,45
+"\fR\s5\&document    \f1\s0" at 37,35
+"\fR\s5\&on \"First step\f1\s0" at 37,25
+"\fR\s5\&to an ODD  \f1\s0" at 37,15
+"\fR\s5\&Engineer    \f1\s0" at 37,5
+] |
+
+define t690 |
+[ box invis ht 60 wid 74 with .sw at 0,0
+"\fR\s5\&Compile     \f1\s0" at 37,55
+"\fR\s5\&and distribute\f1\s0" at 37,45
+"\fR\s5\&document    \f1\s0" at 37,35
+"\fR\s5\&on \"First step\f1\s0" at 37,25
+"\fR\s5\&to an ODD  \f1\s0" at 37,15
+"\fR\s5\&Engineer    \f1\s0" at 37,5
+] |
+
+define t691 |
+[ box invis ht 26 wid 92 with .sw at 0,0
+"\fR\s7\&U.S. savings   \f1\s0" at 46,20
+"\fR\s7\&bond canvanser\f1\s0" at 46,7
+] |
+
+define t481 |
+[ box invis ht 50 wid 48 with .sw at 0,0
+"\fR\s5\&Prepare \f1\s0" at 24,45
+"\fR\s5\&EX2 & \f1\s0" at 24,35
+"\fR\s5\&ML3   \f1\s0" at 24,25
+"\fR\s5\&design  \f1\s0" at 24,15
+"\fR\s5\&package \f1\s0" at 24,5
+] |
+
+define t485 |
+[ box invis ht 50 wid 48 with .sw at 0,0
+"\fR\s5\&Prepare \f1\s0" at 24,45
+"\fR\s5\&EX2 & \f1\s0" at 24,35
+"\fR\s5\&ML3   \f1\s0" at 24,25
+"\fR\s5\&design  \f1\s0" at 24,15
+"\fR\s5\&package \f1\s0" at 24,5
+] |
+
+define t486 |
+[ box invis ht 40 wid 46 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 23,35
+"\fR\s5\&bringup \f1\s0" at 23,25
+"\fR\s5\&for EX2\f1\s0" at 23,15
+"\fR\s5\&& ML3 \f1\s0" at 23,5
+] |
+
+define t487 |
+[ box invis ht 40 wid 52 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 26,35
+"\fR\s5\&bring+up \f1\s0" at 26,25
+"\fR\s5\&for EX2\f1\s0" at 26,15
+"\fR\s5\&& ML3 \f1\s0" at 26,5
+] |
+
+define t488 |
+[ box invis ht 40 wid 46 with .sw at 0,0
+"\fR\s5\&Mini   \f1\s0" at 23,35
+"\fR\s5\&bringup \f1\s0" at 23,25
+"\fR\s5\&for EX2\f1\s0" at 23,15
+"\fR\s5\&& ML3 \f1\s0" at 23,5
+] |
+
+define m0 |
+[ box invis ht 32 wid 680 with .sw at 0,0
+"\fR\s10\&14\f1\s0" at 172,22
+"\fR\s10\&21\f1\s0" at 196,22
+"\fR\s10\&28\f1\s0" at 220,22
+"\fR\s10\&5\f1\s0" at 256,22
+"\fR\s10\&12\f1\s0" at 280,22
+"\fR\s10\&19\f1\s0" at 304,22
+"\fR\s10\&26\f1\s0" at 328,22
+"\fR\s10\&2\f1\s0" at 360,22
+"\fR\s10\&9\f1\s0" at 384,22
+"\fR\s10\&16\f1\s0" at 408,22
+"\fR\s10\&23\f1\s0" at 432,22
+"\fR\s10\&30\f1\s0" at 456,22
+"\fR\s10\&6\f1\s0" at 488,22
+"\fR\s10\&13\f1\s0" at 512,22
+"\fR\s10\&20\f1\s0" at 536,22
+"\fR\s10\&27\f1\s0" at 560,22
+"\fR\s10\&4\f1\s0" at 592,22
+"\fR\s10\&11\f1\s0" at 616,22
+"\fR\s10\&18\f1\s0" at 640,22
+"\fR\s10\&25\f1\s0" at 664,22
+"\fR\s10\&3\f1\s0" at 24,22
+"\fR\s10\&10\f1\s0" at 48,22
+"\fR\s10\&17\f1\s0" at 72,22
+"\fR\s10\&24\f1\s0" at 100,22
+"\fR\s10\&31\f1\s0" at 120,22
+line  from 24,0 to 24,16 
+line  from 48,0 to 48,16 
+line  from 96,16 to 96,0 
+line  from 200,16 to 200,0 
+line  from 224,16 to 224,0 
+line  from 264,8 to 280,8 
+line  from 288,8 to 272,8 
+line  from 296,8 to 272,8 
+line  from 288,8 to 304,8 
+line  from 256,8 to 664,8 
+line  from 272,8 to 280,8 
+line  from 296,8 to 304,8 
+line  from 280,16 to 280,0 
+line  from 304,16 to 304,0 
+line  from 328,16 to 328,0 
+line  from 384,16 to 384,0 
+line  from 432,16 to 432,0 
+line  from 456,16 to 456,0 
+line  from 560,16 to 560,0 
+line  from 488,16 to 488,0 
+line  from 616,16 to 616,0 
+line  from 664,16 to 664,0 
+line  from 592,16 to 592,0 
+line  from 264,8 to 272,8 
+line  from 152,16 to 152,0 
+line  from 176,16 to 176,0 
+line  from 256,8 to 0,8 
+line  from 0,8 to 0,32 
+line  from 640,0 to 640,16 
+line  from 536,0 to 536,16 
+line  from 512,0 to 512,16 
+line  from 408,0 to 408,16 
+line  from 360,0 to 360,16 
+line  from 256,0 to 256,16 
+line  from 120,0 to 120,16 
+line  from 72,0 to 72,16 
+"\fR\s10\&7\f1\s0" at 152,22
+] |
+
+define m1 |
+[ box invis ht 872 wid 704 with .sw at 0,0
+box ht 24 wid 40 with .nw at 336,352 
+line  from 352,432 to 352,352 dotted
+line  from 344,432 to 352,432 dotted
+line  from 344,480 to 344,464 dotted
+line  from 320,496 to 320,480 dotted
+t557 with .nw at 279,535
+box ht 40 wid 48 with .nw at 296,408 
+box ht 32 wid 56 with .nw at 232,408 
+line  from 272,432 to 272,408 dotted
+t558 with .nw at 232,405
+line  from 112,432 to 112,408 dotted
+box ht 48 wid 40 with .nw at 336,544 
+box ht 48 wid 48 with .nw at 280,544 
+box ht 24 wid 56 with .nw at 200,520 
+line  from 240,464 to 240,496 dotted
+t559 with .nw at 200,518
+t560 with .nw at 97,402
+line  from 656,432 to 656,408 dotted
+t561 with .nw at 649,404
+line  from 576,464 to 576,488 dotted
+line  from 528,432 to 528,408 dotted
+t562 with .nw at 513,404
+line  from 608,432 to 608,408 dotted
+line  from 320,432 to 320,408 dotted
+t563 with .nw at 296,408
+t564 with .nw at 584,404
+line  from 472,432 to 472,408 dotted
+t565 with .nw at 448,404
+t566 with .nw at 544,539
+t567 with .nw at 416,539
+line  from 88,432 to 88,448 
+"\fR\s10\&7\f1\s0" at 168,454
+"\fR\s10\&14\f1\s0" at 188,454
+"\fR\s10\&21\f1\s0" at 212,454
+"\fR\s10\&28\f1\s0" at 236,454
+"\fR\s10\&5\f1\s0" at 272,454
+"\fR\s10\&12\f1\s0" at 296,454
+"\fR\s10\&19\f1\s0" at 320,454
+"\fR\s10\&26\f1\s0" at 344,454
+"\fR\s10\&2\f1\s0" at 376,454
+"\fR\s10\&9\f1\s0" at 400,454
+"\fR\s10\&16\f1\s0" at 424,454
+"\fR\s10\&23\f1\s0" at 448,454
+"\fR\s10\&30\f1\s0" at 472,454
+"\fR\s10\&6\f1\s0" at 504,454
+"\fR\s10\&13\f1\s0" at 528,454
+"\fR\s10\&20\f1\s0" at 552,454
+"\fR\s10\&27\f1\s0" at 576,454
+"\fR\s10\&4\f1\s0" at 608,454
+"\fR\s10\&11\f1\s0" at 632,454
+"\fR\s10\&18\f1\s0" at 656,454
+"\fR\s10\&25\f1\s0" at 680,454
+"\fR\s10\&3\f1\s0" at 40,454
+"\fR\s10\&10\f1\s0" at 64,454
+"\fR\s10\&17\f1\s0" at 88,454
+"\fR\s10\&24\f1\s0" at 116,454
+"\fR\s10\&31\f1\s0" at 136,454
+line  from 40,432 to 40,448 
+line  from 64,432 to 64,448 
+line  from 112,448 to 112,432 
+line  from 216,448 to 216,432 
+line  from 240,448 to 240,432 
+line  from 280,440 to 296,440 
+line  from 304,440 to 288,440 
+line  from 312,440 to 288,440 
+line  from 304,440 to 320,440 
+line  from 272,440 to 680,440 
+line  from 288,440 to 296,440 
+line  from 312,440 to 320,440 
+line  from 296,448 to 296,432 
+line  from 320,448 to 320,432 
+line  from 344,448 to 344,432 
+line  from 400,448 to 400,432 
+line  from 448,448 to 448,432 
+line  from 472,448 to 472,432 
+line  from 576,448 to 576,432 
+line  from 632,448 to 632,432 
+line  from 680,448 to 680,432 
+line  from 608,448 to 608,432 
+line  from 280,440 to 288,440 
+line  from 168,448 to 168,432 
+line  from 192,448 to 192,432 
+line  from 16,440 to 16,416 
+line  from 272,440 to 16,440 
+line  from 16,440 to 16,464 
+line  from 656,432 to 656,448 
+line  from 552,432 to 552,448 
+line  from 504,432 to 504,448 
+line  from 528,432 to 528,448 
+line  from 424,432 to 424,448 
+line  from 376,432 to 376,448 
+line  from 272,432 to 272,448 
+line  from 136,432 to 136,448 
+box ht 48 wid 48 with .nw at 584,408 
+box ht 48 wid 48 with .nw at 448,408 
+box ht 24 wid 0 with .nw at 704,384 
+box ht 48 wid 48 with .nw at 648,408 
+box ht 48 wid 48 with .nw at 512,408 
+box ht 48 wid 48 with .nw at 368,408 
+line  from 400,432 to 400,408 dotted
+line  from 424,464 to 424,488 dotted
+box ht 56 wid 40 with .nw at 544,544 
+box ht 56 wid 40 with .nw at 416,544 
+t594 with .nw at 373,404
+box ht 32 wid 40 with .nw at 96,408 
+line  from 344,480 to 320,480 dotted
+line  from 344,496 to 344,480 dotted
+t595 with .nw at 335,543
+t596 with .nw at 341,350
+t597 with .nw at 96,602
+t598 with .nw at 232,602
+line  from 192,656 to 192,640 
+line  from 168,656 to 168,640 
+line  from 112,656 to 112,640 
+line  from 136,656 to 136,640 
+line  from 216,656 to 216,640 
+line  from 320,656 to 320,640 
+line  from 376,656 to 376,640 
+line  from 400,656 to 400,640 
+line  from 552,656 to 552,640 
+line  from 632,656 to 632,640 
+line  from 280,648 to 288,648 
+line  from 608,656 to 608,640 
+"\fR\s10\&10\f1\s0" at 64,662
+"\fR\s10\&3\f1\s0" at 40,662
+"\fR\s10\&18\f1\s0" at 656,662
+"\fR\s10\&11\f1\s0" at 632,662
+"\fR\s10\&4\f1\s0" at 608,662
+"\fR\s10\&27\f1\s0" at 576,662
+"\fR\s10\&20\f1\s0" at 552,662
+"\fR\s10\&13\f1\s0" at 528,662
+"\fR\s10\&6\f1\s0" at 504,662
+"\fR\s10\&30\f1\s0" at 472,662
+"\fR\s10\&23\f1\s0" at 448,662
+"\fR\s10\&16\f1\s0" at 424,662
+"\fR\s10\&9\f1\s0" at 400,662
+"\fR\s10\&2\f1\s0" at 376,662
+"\fR\s10\&26\f1\s0" at 344,662
+"\fR\s10\&19\f1\s0" at 320,662
+"\fR\s10\&12\f1\s0" at 296,662
+"\fR\s10\&5\f1\s0" at 272,662
+"\fR\s10\&28\f1\s0" at 236,662
+"\fR\s10\&21\f1\s0" at 216,662
+"\fR\s10\&14\f1\s0" at 188,662
+"\fR\s10\&25\f1\s0" at 680,662
+"\fR\s10\&7\f1\s0" at 168,662
+"\fR\s10\&31\f1\s0" at 136,662
+"\fR\s10\&24\f1\s0" at 116,662
+"\fR\s10\&17\f1\s0" at 88,662
+line  from 152,672 to 152,624 
+line  from 256,672 to 256,624 
+line  from 360,672 to 360,624 
+line  from 488,672 to 488,624 
+line  from 592,672 to 592,624 
+line  from 16,672 to 16,624 
+line  from 680,656 to 680,640 
+box ht 24 wid 40 with .nw at 120,192 
+box ht 24 wid 32 with .nw at 72,152 
+line  from 88,168 to 88,152 dotted
+t625 with .nw at 75,150
+line  from 528,216 to 528,192 dotted
+t626 with .nw at 412,190
+t627 with .nw at 514,192
+line  from 424,216 to 424,192 dotted
+t628 with .nw at 347,305
+line  from 376,248 to 376,272 dotted
+t629 with .nw at 327,186
+line  from 344,216 to 344,192 dotted
+t630 with .nw at 204,185
+line  from 216,216 to 216,192 dotted
+t631 with .nw at 152,298
+line  from 64,216 to 64,192 dotted
+box ht 40 wid 48 with .nw at 80,312 
+box ht 32 wid 32 with .nw at 152,304 
+box ht 40 wid 64 with .nw at 344,312 
+box ht 40 wid 48 with .nw at 512,192 
+box ht 24 wid 40 with .nw at 408,192 
+box ht 32 wid 32 with .nw at 328,192 
+line  from 112,248 to 112,272 dotted
+line  from 168,248 to 168,272 dotted
+t632 with .nw at 120,190
+line  from 136,216 to 136,192 dotted
+t633 with .nw at 85,312
+box ht 24 wid 64 with .nw at 40,192 
+t634 with .nw at 41,190
+line  from 16,224 to 16,200 
+box ht 40 wid 40 with .nw at 200,192 
+m0 with .nw at 16,248
+t689 with .nw at 179,59
+line  from 216,80 to 216,88 dotted
+line  from 216,88 to 216,64 dotted
+t690 with .nw at 263,60
+line  from 272,88 to 272,64 dotted
+t691 with .nw at 46,58
+box ht 40 wid 104 with .nw at 40,64 
+box ht 64 wid 72 with .nw at 264,64 
+box ht 56 wid 80 with .nw at 176,64 
+"\fR\s10\&21\f1\s0" at 212,110
+"\fR\s10\&28\f1\s0" at 236,110
+"\fR\s10\&5\f1\s0" at 272,110
+"\fR\s10\&12\f1\s0" at 296,110
+"\fR\s10\&19\f1\s0" at 320,110
+"\fR\s10\&26\f1\s0" at 344,110
+"\fR\s10\&2\f1\s0" at 376,110
+"\fR\s10\&9\f1\s0" at 400,110
+"\fR\s10\&16\f1\s0" at 424,110
+"\fR\s10\&23\f1\s0" at 448,110
+"\fR\s10\&30\f1\s0" at 472,110
+"\fR\s10\&6\f1\s0" at 504,110
+"\fR\s10\&13\f1\s0" at 528,110
+"\fR\s10\&20\f1\s0" at 552,110
+"\fR\s10\&27\f1\s0" at 576,110
+"\fR\s10\&4\f1\s0" at 608,110
+"\fR\s10\&11\f1\s0" at 632,110
+"\fR\s10\&18\f1\s0" at 656,110
+"\fR\s10\&25\f1\s0" at 680,110
+"\fR\s10\&3\f1\s0" at 40,110
+"\fR\s10\&10\f1\s0" at 64,110
+"\fR\s10\&17\f1\s0" at 88,110
+"\fR\s10\&24\f1\s0" at 116,110
+"\fR\s10\&31\f1\s0" at 136,110
+line  from 40,88 to 40,104 
+line  from 64,88 to 64,104 
+line  from 112,104 to 112,88 
+line  from 216,104 to 216,88 
+line  from 240,104 to 240,88 
+line  from 280,96 to 296,96 
+line  from 304,96 to 288,96 
+line  from 312,96 to 288,96 
+line  from 304,96 to 320,96 
+line  from 272,96 to 680,96 
+line  from 288,96 to 296,96 
+line  from 312,96 to 320,96 
+line  from 296,104 to 296,88 
+line  from 320,104 to 320,88 
+line  from 344,104 to 344,88 
+line  from 400,104 to 400,88 
+line  from 448,104 to 448,88 
+line  from 472,104 to 472,88 
+line  from 576,104 to 576,88 
+line  from 504,104 to 504,88 
+line  from 632,104 to 632,88 
+line  from 680,104 to 680,88 
+line  from 608,104 to 608,88 
+line  from 280,96 to 288,96 
+line  from 168,104 to 168,88 
+line  from 192,104 to 192,88 
+line  from 272,96 to 16,96 
+line  from 16,72 to 16,120 
+line  from 152,248 to 152,200 
+line  from 256,248 to 256,200 
+line  from 360,248 to 360,200 
+line  from 488,248 to 488,200 
+line  from 592,248 to 592,200 
+line  from 152,120 to 152,72 
+line  from 256,120 to 256,72 
+line  from 360,120 to 360,72 
+line  from 488,120 to 488,72 
+line  from 592,120 to 592,72 
+line  from 152,464 to 152,416 
+line  from 256,464 to 256,416 
+line  from 360,464 to 360,416 
+line  from 488,464 to 488,416 
+line  from 592,464 to 592,416 
+line  from 656,88 to 656,104 
+line  from 552,88 to 552,104 
+line  from 528,88 to 528,104 
+line  from 424,88 to 424,104 
+line  from 376,88 to 376,104 
+line  from 272,88 to 272,104 
+line  from 136,88 to 136,104 
+line  from 88,88 to 88,104 
+"\fR\s10\&7\f1\s0" at 168,110
+"\fR\s10\&14\f1\s0" at 188,110
+line  from 88,88 to 88,64 dotted
+line  from 64,88 to 64,64 dotted
+line  from 656,656 to 656,640 
+line  from 504,656 to 504,640 
+line  from 576,656 to 576,640 
+line  from 528,656 to 528,640 
+line  from 472,656 to 472,640 
+line  from 448,656 to 448,640 
+line  from 424,656 to 424,640 
+line  from 344,656 to 344,640 
+line  from 296,656 to 296,640 
+line  from 272,656 to 272,640 
+line  from 312,648 to 320,648 
+line  from 288,648 to 296,648 
+line  from 16,648 to 680,648 
+line  from 304,648 to 320,648 
+line  from 312,648 to 288,648 
+line  from 304,648 to 288,648 
+line  from 280,648 to 296,648 
+line  from 240,656 to 240,640 
+line  from 40,640 to 40,656 
+line  from 64,640 to 64,648 
+line  from 64,648 to 64,656 
+line  from 88,640 to 88,656 
+t481 with .nw at 72,747
+"\fR\s7\&P11.0\f1\s0" at 296,709
+"\fR\s7\&P10.0\f1\s0" at 184,705
+line  from 296,696 to 296,672 dotted
+line  from 192,696 to 192,672 dotted
+line  from 40,672 to 40,696 dotted
+"\fR\s7\&P9.0\f1\s0" at 44,705
+line  from 296,640 to 296,608 dotted
+line  from 240,640 to 240,608 dotted
+line  from 216,696 to 216,672 dotted
+t485 with .nw at 208,747
+line  from 192,640 to 192,608 dotted
+t486 with .nw at 177,606
+t487 with .nw at 26,602
+box ht 48 wid 48 with .nw at 176,608 
+box ht 16 wid 0 with .nw at 224,576 
+box ht 48 wid 48 with .nw at 96,608 
+box ht 48 wid 48 with .nw at 24,608 
+box ht 56 wid 40 with .nw at 208,752 
+box ht 56 wid 40 with .nw at 72,752 
+line  from 88,672 to 88,696 dotted
+line  from 112,640 to 112,608 dotted
+line  from 40,640 to 40,608 dotted
+box ht 48 wid 48 with .nw at 288,608 
+box ht 48 wid 48 with .nw at 232,608 
+t488 with .nw at 293,602
+line  from 64,776 to 64,792 
+line  from 112,792 to 112,776 
+line  from 216,792 to 216,776 
+line  from 240,792 to 240,776 
+line  from 280,784 to 296,784 
+line  from 304,784 to 288,784 
+line  from 312,784 to 288,784 
+line  from 304,784 to 320,784 
+line  from 272,784 to 680,784 
+line  from 288,784 to 296,784 
+line  from 312,784 to 320,784 
+line  from 296,792 to 296,776 
+line  from 320,792 to 320,776 
+line  from 344,792 to 344,776 
+line  from 400,792 to 400,776 
+line  from 448,792 to 448,776 
+line  from 472,792 to 472,776 
+line  from 576,792 to 576,776 
+line  from 504,792 to 504,776 
+line  from 632,792 to 632,776 
+line  from 680,792 to 680,776 
+line  from 608,792 to 608,776 
+line  from 280,784 to 288,784 
+line  from 168,792 to 168,776 
+line  from 192,792 to 192,776 
+line  from 16,784 to 16,768 
+line  from 272,784 to 16,784 
+line  from 16,784 to 16,808 
+line  from 656,776 to 656,792 
+line  from 552,776 to 552,792 
+line  from 528,776 to 528,792 
+line  from 424,776 to 424,792 
+line  from 376,776 to 376,792 
+line  from 272,776 to 272,792 
+line  from 136,776 to 136,792 
+line  from 88,776 to 88,792 
+"\fR\s10\&7\f1\s0" at 168,798
+"\fR\s10\&OCT\f1\s0" at 592,862
+line  from 152,784 to 152,832 
+line  from 256,784 to 256,832 
+"\fR\s10\&MAY\f1\s0" at 20,862
+"\fR\s10\&JUNE\f1\s0" at 152,862
+line  from 16,848 to 16,856 
+line  from 152,848 to 152,856 
+line  from 256,840 to 256,856 
+line  from 256,840 to 256,848 
+line  from 360,784 to 360,848 
+line  from 256,832 to 256,848 
+line  from 152,832 to 152,848 
+line  from 16,808 to 16,840 
+line  from 16,840 to 16,848 
+line  from 488,784 to 488,856 
+line  from 360,848 to 360,856 
+line  from 592,784 to 592,856 
+"\fR\s10\&JULY\f1\s0" at 260,862
+"\fR\s10\&AUGUST\f1\s0" at 364,862
+"\fR\s10\&SEPT\f1\s0" at 492,862
+"\fR\s10\&14\f1\s0" at 188,798
+"\fR\s10\&21\f1\s0" at 212,798
+"\fR\s10\&28\f1\s0" at 236,798
+"\fR\s10\&5\f1\s0" at 272,798
+"\fR\s10\&12\f1\s0" at 296,798
+"\fR\s10\&19\f1\s0" at 320,798
+"\fR\s10\&26\f1\s0" at 344,798
+"\fR\s10\&2\f1\s0" at 376,798
+"\fR\s10\&9\f1\s0" at 400,798
+"\fR\s10\&16\f1\s0" at 424,798
+"\fR\s10\&23\f1\s0" at 448,798
+"\fR\s10\&30\f1\s0" at 472,798
+"\fR\s10\&6\f1\s0" at 504,798
+"\fR\s10\&13\f1\s0" at 528,798
+"\fR\s10\&20\f1\s0" at 552,798
+"\fR\s10\&27\f1\s0" at 576,798
+"\fR\s10\&4\f1\s0" at 608,798
+"\fR\s10\&11\f1\s0" at 632,798
+"\fR\s10\&18\f1\s0" at 656,798
+"\fR\s10\&25\f1\s0" at 680,798
+"\fR\s10\&3\f1\s0" at 40,798
+"\fR\s2\&10\f1\s0" at 64,796
+"\fR\s10\&17\f1\s0" at 88,798
+"\fR\s10\&24\f1\s0" at 116,798
+"\fR\s10\&31\f1\s0" at 136,798
+line  from 40,776 to 40,792 
+] |
+
+box invis ht 944 wid 704 with .sw at 0,0
+m1 with .nw at 0,872
+"\fR\s10\&INTEGRATION SCHEDULE\f1\s0" at 216,934
+.PE
+.fi

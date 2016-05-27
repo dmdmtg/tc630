@@ -1,0 +1,54 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.TH DMDFCONV 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdfconv \- format conversion filter
+.SH SYNOPSIS
+.I dmdfconv 
+[-o | -n] 
+[ infile [ outfile] ]
+.SH DESCRIPTION
+.PP
+.I dmdfconv 
+converts 
+.I dmdps 
+and 
+.I brush 
+bitmaps to new or old formats. 
+.I Dmdfconv
+uses the following options:
+.TP
+.BI -n
+convert to new format.
+.TP
+.BI -o
+convert to old format.
+.PP
+If no output type is specified, 
+.I dmdfconv
+just flips formats.
+.sp
+.SH "EXAMPLES"
+dmdfconv < BLITMAP > otherfmt
+.sp
+The above command converts the format of BLITMAP and deposits it in otherfmt.
+.sp
+dmdfconv -n < BLITMAP > newfmt
+.sp
+The above command converts the format of BLITMAP to the new 
+format and deposits it in newfmt.
+.sp
+dmdfconv -o < BLITMAP > oldfmt
+.sp
+The above command converts the format of BLITMAP to the old 
+format and deposits it in oldfmt.
+.SH "SEE ALSO"
+.IR "layers(1), dmdfmt(1), dmdscale(1), dmdps(1), dmdpr(1), brush(1)."

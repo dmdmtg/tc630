@@ -1,0 +1,152 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.\" t
+.if \nZ \{\
+.TH XHP2621 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH HP2621 1 TOOLCHEST\}
+.SH NAME
+hp2621 - Hewlett Packard 2621 terminal emulator
+.SH SYNOPSIS
+\fBhp2621\fR [\fB-V\fP] [ startup [ first-time ] ]
+.SH DESCRIPTION
+\fIhp2621\fP is a terminal emulator for AT&T Dot-Mapped Display terminals (5620
+DMD and 630 MTG) that causes a layer of the
+terminal to operate as an HP2621 Interactive Terminal.
+It allows the user to run programs that normally converse with
+HP2621 terminals.  In addition, it provides useful features such as
+screen memory and reverse-video.
+.PP
+To use \fIhp2621\fP, the variable $TERM should be set to \f32621\f1
+and exported.
+To exit the emulator, simply execute \fIjterm\fP in its window.
+.P
+On 630 MTG terminals, \fIhp2621\fP automatically places itself in 
+the terminal's RAM memory cache.  The next invocation of \fIhp2621\fP
+will bring up the program quickly without having to download it
+again.  Use the 630 MTG \fIucache(1)\fP program to remove \fIhp2621\fP
+from the cache.
+.P
+The \fB-V\fP option causes \fIhp2621\fP to print a message that
+identifies which version it is.
+.PP
+.I startup
+is a command sent to the host every time a new
+.I hp2621
+layer is created.  The maximum length of 
+.I startup
+is 99 characters.
+.I first-time
+is a command sent to the host only when the
+first layer is created.  Both commands get echoed in the layer which
+sent them.
+.P
+Button 2 of the mouse displays a menu of
+\fIhp2621\fP-specific functions. The following items may
+appear as part of the menu:
+.TP 12
+.B "backup"
+The 
+.I hp2621
+emulator has 4096 bytes of on and off screen storage.
+Lines that scroll off the top edge of the layer are maintained
+in this storage.  The
+.B backup
+option
+allows the user to page backward through it.  Each time the
+option is selected the information displayed in the layer is replaced by
+information one page backward.  A page is defined for scrolling
+purposes as roughly 3/4 of the length of the layer.
+.TP
+.B forward
+The \fBforward\fP menu option is used to page forward through display memory.
+Both 
+.B backup
+and
+.B forward
+will leave at least 2 blank lines at the bottom of the layer.
+.TP
+.B reset
+This option causes the last page of data stored by \fIhp2621\fP to
+be displayed.
+Again, a page is about 3/4 the length of the layer.
+.TP
+.B "rev vid"
+Selecting this menu option toggles reverse video within the layer.
+.TP
+.B blink
+This option toggles the cursor between a solid rectangle and a blinking
+rectangle.
+.TP
+.B clear
+.B clear
+clears the layer.  It does not alter data stored in display
+memory.  Selecting the menu options
+.B backup,
+.B forward,
+or
+.B reset
+will redisplay the data in memory.
+.TP
+.B 24x80
+This option will reshape the current layer such that it is 24 rows
+long by 80 columns wide.  This option must always be used when working
+with the 
+.I vi
+editor.  If there is not enough memory to do the
+reshaping then the layer is reshaped to a small rectangle in the upper
+left hand corner of the screen.
+.TP
+.B page/scroll
+Normally, the layer is scrolled - lines are moved up one row at a time
+as line feeds are encountered on the bottom line of the layer.
+Selecting
+.B page
+will cause input to halt at the bottom of the layer until a character
+is entered from the keyboard.  The layer is then cleared and output
+continues at the top of the layer.
+The menu option is changed from 
+.B page
+to
+.B scroll.
+Reselecting scroll switches the emulator back to scrolling mode and
+changes the menu option back to
+.B page.
+.if \nZ \{\
+.TP
+.B new
+This option is only available for the 5620 DMD. 
+.B new
+allows the user to create a new layer (without the need to download
+the emulator a second time) that will also run the emulator.  
+Button three is used as normal for sweeping out the new layer.
+If specified in the command line, the
+.I startup
+command is sent to the host within this new layer.
+which is not delivered to exptools.\}
+.SH BUGS
+The emulator does not examine \fIstty(1)\fP options.  Therefore,
+such options as arbitrary tab settings are not available.
+.if \nZ \{\
+.SH FILES
+.ta 3i
+$TOOLS/lib/dmdtools/xhp2621	host support for \fIxhp2621\fP
+.br
+$TOOLS/lib/630/xhp2621.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xhp2621.m	terminal support for the 5620 DMD\}
+.DT
+.SH SEE ALSO
+.if \nZ \{\
+dlf(1) in \fIexptools\fP\}
+.br
+jterm(1), jwin(1), stty(1) in the
+\fIUnix System V Release 3 User's Reference Manual\fP.
+.br
+ucache(1) in the \fI630 MTG Software Reference Manual\fP.

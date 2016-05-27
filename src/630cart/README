@@ -1,0 +1,55 @@
+Manual Page
+===========
+The name of the front end shell script for the cartridge tools is 630cart.
+A manual page for 630cart is contained in the file 630cart.man.  A printed
+copy of this manual page can be obtained using the following command:
+
+	troff -man [printer options] | <your favorite troff print command>
+
+Building the Cartridge tools
+============================
+
+	make all
+
+The files created by this make must be accessible through your PATH variable.
+
+Sample Application and Font Specification Files
+==============================================
+The file SAMPLEramlist contains a sample of downloadable applications.
+The file SAMPLEromlist contains a sample of rom executable application.
+The file SAMPLEfontlist contains a sample font specification file.
+
+Sample 630cart Command Line
+===========================
+If you had, and you probably don't, the applications and fonts specified
+in SAMPLEramlist, SAMPLEromlist and SAMPLEfontlist, the command to 630cart
+could have any of the following formats:
+
+	630cart -o test -a SAMPLEramlist -r SAMPLEromlist -f SAMPLEfontlist
+
+	630cart -o test -a SAMPLEramist -r SAMPLEromlist
+
+	630cart -o test -a SAMPLEramlist -f SAMPLEfontlist
+
+	630cart -o test -r SAMPLEromlist -f SAMPLEfontlist
+
+	630cart -o test -f SAMPLEfontlist
+
+	630cart -o test -a SAMPLEramlist
+
+	630cart -o test -r SAMPLEromlist
+
+
+The command line chosen depends on whether you have downloadable applications
+and/or rom executable application and/or fonts.
+Cplayer.make is a sample makefile for creating rom executable (see
+SAMPLEromlist input to 630cart) application (Cplayer.c).
+
+Output
+======
+The EPROM images output would be placed in the files test.000 and test.100
+given that your application fits in 128K bytes.
+See the manual page for other possible memory configurations and EPROM
+locations on the cartridge circuit card.
+
+There may be other extraneous file output from 630cart.  These may be ignored.

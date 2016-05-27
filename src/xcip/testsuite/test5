@@ -1,0 +1,344 @@
+.nf
+.PS
+scale=100
+define t101 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t102 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t117 |
+[ box invis ht 26 wid 20 with .sw at 0,0
+"\fR\s7\&PD\fP\s0" at 10,19
+"\fR\s7\&PD\fP\s0" at 10,5
+] |
+
+define t118 |
+[ box invis ht 36 wid 20 with .sw at 0,0
+"\fR\s7\&PD\fP\s0" at 10,29
+"\fR\s7\&PD\fP\s0" at 10,17
+"\fR\s7\&PD\fP\s0" at 10,5
+] |
+
+define t119 |
+[ box invis ht 48 wid 20 with .sw at 0,0
+"\fR\s7\&PD\fP\s0" at 10,41
+"\fR\s7\&PD\fP\s0" at 10,29
+"\fR\s7\&PD\fP\s0" at 10,17
+"\fR\s7\&PD\fP\s0" at 10,5
+] |
+
+define t120 |
+[ box invis ht 48 wid 26 with .sw at 0,0
+"\fR\s7\&300\fP\s0" at 13,41
+"\fR\s7\&MB\fP\s0" at 13,29
+"\fR\s7\&\fP\s0" at 13,17
+"\fR\s7\&QIC\fP\s0" at 13,5
+] |
+
+define t131 |
+[ box invis ht 50 wid 38 with .sw at 0,0
+"\fR\s16\&570\fP\s0" at 19,35
+"\fR\s16\&MB\fP\s0" at 19,9
+] |
+
+define t132 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t101 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t102 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t136 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t137 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t139 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t141 |
+[ box invis ht 36 wid 14 with .sw at 0,0
+"\fR\s7\&O\fP\s0" at 7,29
+"\fR\s7\&L\fP\s0" at 7,17
+"\fR\s7\&S\fP\s0" at 7,5
+] |
+
+define t142 |
+[ box invis ht 38 wid 14 with .sw at 0,0
+"\fR\s8\&O\fP\s0" at 7,31
+"\fR\s8\&L\fP\s0" at 7,18
+"\fR\s8\&S\fP\s0" at 7,5
+] |
+
+define m22 |
+[ box invis ht 136 wid 128 with .sw at 0,0
+box ht 136 wid 128 with .nw at 0,136 
+"\fR\s16\&TAPE\fP\s0" at 60,69
+] |
+
+define m15 |
+[ box invis ht 40 wid 128 with .sw at 0,0
+t101 with .nw at 113,36
+t102 with .nw at 1,36
+"\fR\s16\&BCU\fP\s0" at 64,21
+box ht 40 wid 128 with .nw at 0,40 
+line  from 112,40 to 112,0 
+line  from 16,40 to 16,0 
+] |
+
+define m3 |
+[ box invis ht 304 wid 144 with .sw at 0,0
+box ht 304 wid 144 with .nw at 0,304 
+] |
+
+define m0 |
+[ box invis ht 40 wid 128 with .sw at 0,0
+box ht 40 wid 128 with .nw at 0,40 
+"\fR\s16\&FAN UNIT\fP\s0" at 64,15
+] |
+
+define m23 |
+[ box invis ht 32 wid 112 with .sw at 0,0
+"\fR\s16\&GROWTH\fP\s0" at 58,15
+] |
+
+define m21 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+"\fR\s7\&PD\fP\s0" at 12,42
+box ht 56 wid 24 with .nw at 0,56 
+] |
+
+define m20 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+t117 with .nw at 2,51
+box ht 56 wid 24 with .nw at 0,56 
+] |
+
+define m19 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+t118 with .nw at 2,48
+box ht 56 wid 24 with .nw at 0,56 
+] |
+
+define m18 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+t119 with .nw at 2,54
+box ht 56 wid 24 with .nw at 0,56 
+] |
+
+define m1 |
+[ box invis ht 56 wid 40 with .sw at 0,0
+t120 with .nw at 7,54
+box ht 56 wid 24 with .nw at 8,56 
+] |
+
+define m11 |
+[ box invis ht 64 wid 24 with .sw at 0,0
+"\fR\s7\&MB\fP\s0" at 12,37
+"\fR\s7\&300\fP\s0" at 12,25
+"\fR\s7\&MB\fP\s0" at 12,11
+box ht 56 wid 24 with .nw at 0,56 
+"\fR\s7\&300\fP\s0" at 12,51
+] |
+
+define m17 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+box ht 56 wid 24 with .nw at 0,56 
+"\fR\s7\&300\fP\s0" at 12,49
+"\fR\s7\&MB\fP\s0" at 12,37
+] |
+
+define m16 |
+[ box invis ht 56 wid 56 with .sw at 0,0
+t131 with .nw at 9,53
+box ht 56 wid 56 with .nw at 0,56 
+] |
+
+define m2 |
+[ box invis ht 88 wid 128 with .sw at 0,0
+t132 with .nw at 1,36
+line  from 0,40 to 16,40 
+line  from 0,48 to 16,48 
+box ht 88 wid 128 with .nw at 0,88 
+line  from 16,88 to 16,0 
+line  from 24,88 to 24,0 
+line  from 32,88 to 32,0 
+line  from 40,88 to 40,0 
+line  from 48,88 to 48,0 
+line  from 56,88 to 56,0 
+line  from 64,88 to 64,0 
+line  from 72,88 to 72,0 
+line  from 80,88 to 80,0 
+line  from 88,88 to 88,0 
+line  from 96,88 to 96,0 
+line  from 104,88 to 104,0 
+line  from 112,88 to 112,0 
+line  from 120,88 to 120,0 
+] |
+
+define m14 |
+[ box invis ht 40 wid 128 with .sw at 0,0
+t136 with .nw at 113,36
+t137 with .nw at 1,36
+"\fR\s16\&ELBU\fP\s0" at 60,19
+box ht 40 wid 128 with .nw at 0,40 
+line  from 112,40 to 112,0 
+line  from 16,40 to 16,0 
+] |
+
+define m13 |
+[ box invis ht 40 wid 128 with .sw at 0,0
+t139 with .nw at 1,36
+box ht 40 wid 128 with .nw at 0,40 
+line  from 16,40 to 16,0 
+line  from 112,40 to 112,0 
+"\fR\s16\&GCU\fP\s0" at 60,23
+t141 with .nw at 113,36
+] |
+
+define m12 |
+[ box invis ht 56 wid 48 with .sw at 0,0
+t142 with .nw at 1,45
+line  from 16,56 to 16,0 
+line  from 32,56 to 32,0 
+box ht 56 wid 48 with .nw at 0,56 
+] |
+
+define m4 |
+[ box invis ht 1 wid 144 with .sw at 0,0
+line  from 0,1 to 144,1 
+] |
+
+define m10 |
+[ box invis ht 88 wid 128 with .sw at 0,0
+box ht 88 wid 128 with .nw at 0,88 
+line  from 32,64 to 96,64 
+line  from 96,64 to 96,0 
+"\fR\s16\&ACP\fP\s0" at 64,41
+line  from 32,0 to 32,64 
+] |
+
+define m5 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+"\fR\s7\&B\fP\s0" at 14,35
+"\fR\s7\&B\fP\s0" at 14,11
+"\fR\s7\&I\fP\s0" at 14,23
+"\fR\s7\&D\fP\s0" at 14,47
+] |
+
+define m9 |
+[ box invis ht 96 wid 24 with .sw at 0,0
+"\fR\s7\&A\fP\s0" at 10,71
+"\fR\s7\&E\fP\s0" at 10,85
+"\fR\s7\&S\fP\s0" at 10,7
+"\fR\s7\&C\fP\s0" at 10,19
+"\fR\s7\&/\fP\s0" at 10,33
+"\fR\s7\&P\fP\s0" at 10,45
+"\fR\s7\&D\fP\s0" at 10,59
+] |
+
+define m8 |
+[ box invis ht 48 wid 24 with .sw at 0,0
+"\fR\s7\&D\fP\s0" at 14,25
+"\fR\s7\&P\fP\s0" at 14,11
+"\fR\s7\&A\fP\s0" at 14,39
+] |
+
+define m6 |
+[ box invis ht 56 wid 24 with .sw at 0,0
+"\fR\s7\&D\fP\s0" at 14,23
+"\fR\s7\&A\fP\s0" at 14,35
+"\fR\s7\&P\fP\s0" at 14,11
+"\fR\s7\&E\fP\s0" at 14,47
+] |
+
+define m7 |
+[ box invis ht 32 wid 48 with .sw at 0,0
+"\fR\s16\&SPC\fP\s0" at 26,15
+] |
+
+box invis ht 776 wid 752 with .sw at 0,0
+m22 with .nw at 8,768
+m15 with .nw at 8,568
+m3 with .nw at 0,776
+m0 with .nw at 8,520
+m23 with .nw at 536,312
+"\fR\s16\&BASIC\fP\s0" at 68,441
+"\fR\s16\&ABUS\fP\s0" at 224,441
+"\fR\s16\&DCC\fP\s0" at 380,441
+"\fR\s16\&DCC\fP\s0" at 528,441
+"\fR\s16\&SPC\fP\s0" at 664,231
+"\fR\s16\&MBSPC\fP\s0" at 680,441
+"\fR\s16\&GROWTH\fP\s0" at 664,181
+"\fR\s16\&\fP\s0" at 664,155
+m0 with .nw at 328,216
+m22 with .nw at 40,192
+m21 with .nw at 392,56
+m20 with .nw at 360,56
+m19 with .nw at 328,56
+m18 with .nw at 296,56
+m1 with .nw at 256,56
+m11 with .nw at 232,64
+m17 with .nw at 200,64
+m17 with .nw at 616,536
+m17 with .nw at 648,536
+m16 with .nw at 288,144
+m2 with .nw at 344,376
+m15 with .nw at 352,152
+m14 with .nw at 472,216
+m13 with .nw at 192,216
+m12 with .nw at 224,152
+m3 with .nw at 608,776
+m11 with .nw at 616,680
+m11 with .nw at 648,608
+m11 with .nw at 616,608
+m11 with .nw at 648,680
+m3 with .nw at 32,336
+m4 with .nw at 608,616
+m4 with .nw at 608,544
+m4 with .nw at 528,272
+m10 with .nw at 496,160
+m5 with .nw at 256,400
+m5 with .nw at 184,600
+m9 with .nw at 280,408
+m8 with .nw at 208,400
+m6 with .nw at 232,400
+m7 with .nw at 672,376
+.PE
+.fi

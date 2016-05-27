@@ -1,0 +1,136 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.ds ZZ CORE PACKAGE
+.if \nZ \{\
+.TH XTEK4014 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH TEK4014 1 TOOLCHEST\}
+.SH NAME
+tek4014 \- Tektronix 4014 emulator
+.SH SYNOPSIS
+\fBtek4014\fP [ strap options ] [ \fB-Vuc\fR ]
+.SH DESCRIPTION
+The
+.I tek4014 
+utility
+emulates a Tektronix 4014 computer display terminal for AT&T Dot-Mapped
+Display terminals (5620 DMD and 630 MTG). 
+The terminal must be operating in the layers environment before 
+downloading \fItek4014\fP [see \fIlayers(1)\fP].
+For maximum Tektronix compatibility,
+a layer should be created using the full screen width and three fifths of the
+screen height.  Distortion of the image will occur otherwise.
+.P
+Command line options can be used to simulate 4014
+strap options.  In addition, a variety of choices for portraying "grey levels" are
+selectable via the mouse.  
+.P
+The \fB-V\fP option causes \fItek4014\fP to print a message that
+identifies which version it is.
+.P
+The \fB-c\fP option, available only for the 630 MTG, results in the \fItek4014\fP
+program being kept \fI(cached)\fP in the terminal's RAM memory after 
+quitting \fItek4014.\fP  The next invocation of \fItek4014\fP will bring 
+up the program quickly without having to
+download it.  Use the 630 MTG \fIucache(1)\fP program to remove \fItek4014\fP from the
+terminal's cache.
+.SH STRAP OPTIONS
+.sp
+.TS
+center;
+c c c
+l l l.
+\f3Strap	Option	Effect\f1
+.sp
+LFeffect	\f3\-l\f1\(**	Default: Received LF displays LF only.
+		\f3\-l\f1: Received LF displays LF and CR.
+.sp
+CReffect	\f3\-r\f1\(**	Default: Received CR displays CR only.
+		\f3\-r\f1: Received CR displays CR and LF.
+.sp
+DELimpliesLOY	\f3\-d\f1	Default: DEL is legal LOY.
+		\f3\-d\f1: ESC ? also recognized as DEL.
+.sp
+GINcount	\f3\-e\f1, -g\(dg	Default: GIN mode sends four position 
+		characters, and a CR.
+		\f3\-e\f1: Sends an EOT following the CR.
+		\f3\-g\f1: Sends only the GIN characters;
+		without CR or EOT.  This is needed for \fIged\fR(1).
+.sp
+DIMallowed\(dd	\fB\f3-u\f1\fR	Default: ALLOWED.  The screen will dim 
+		after being idle for 90 seconds in ALPHA mode.  
+		Recover either by typing a character, or by 
+		selecting \fBshift\fP on the button 2 menu.  
+		\fB\f3-u\f1\fR: The screen never dims.
+.TE
+.sp
+\(** Only one of \f3\-l\f1 and \f3\-r\f1 may be selected.
+.br
+\(dg Only one of \f3\-e\f1 and \f3\-g\f1 may be selected.
+.br
+\(dd This is not a true 4014 strap,
+but is included to make the emulator more usable.
+.SH MOUSE
+.TP 15
+\fBButton 1\fP
+Button 1 is used to select the cross hairs when in GIN mode.  Moving
+the mouse moves the cross hair position.
+.TP 15
+\fBButton 2\fP
+The button 2 menu contains a list of options and functions (Table 1).
+.sp
+.TS
+allbox center;
+c s
+l l.
+Table 1
+line/local	selects line or local mode
+page	simulates 4014 \fBpage\fP key
+reset	T{
+resets default font, sends cursor to home
+position, and brightens the screen (at least)
+T}
+font	selects font menu
+flash/no flash	T{
+briefly highlights characters as they are drawn
+T}
+dither/random	T{
+selects either dithering process or
+coin-flip method to simulate grey levels\(dg
+T}
+smear/focus	T{
+selects either a 2x2 cell of pixels
+(smear) or a 1x1 cell (focus) to represent 100%\(dg
+T}
+shift	T{
+brightens the screen
+(displayed only when the screen is dim)
+T}
+exit	returns to the user's shell
+.TE
+.sp
+\(dg Since a DMD does not have grey 
+levels or the resolution of a real 4014, some fiddling with these
+may be necessary to produce the best emulation.
+\fBDither\fP and \fBsmear\fP yield the best results in most cases.
+.if \nZ \{\
+.SH FILES
+.ta 3i
+$TOOLS/lib/dmdtools/xtek4014	host support for \fIxtek4014\fP
+.br
+$TOOLS/lib/630/xtek4014.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xtek4014.m	terminal support for the 5620 DMD\}
+.SH SEE ALSO
+layers(1), ged(1), graphics(1) in the
+\f2\s-1UNIX\s+1 System V User Reference Manual\f1.
+.br
+ucache(1) in the \fI630 MTG Software Reference Manual\fP.
+.br
+.I Tektronix 4014 Operator's Manual.

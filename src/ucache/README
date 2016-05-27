@@ -1,0 +1,66 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+# @(#)README	1.1.1.2   (11/6/87)
+
+PROGRAM: xucache
+
+DESCRIPTION: list and remove object file from the Application cache.
+
+TERMINAL: 630  MTG - requires 630 MTG Software Development Package
+
+COMPUTER: 3B2
+	  3B20
+	  VAX  (requires porting the 630 MTG Software Development Package)
+	  AMDAHL (requires porting the 630 MTG Software Development Package)
+
+OPERATING SYSTEM: UNIX System V Release 2 or 3 with Windowing Utilities
+		  or the 5620 DMD Core Package installed
+
+BUILD PROCEDURE: make DMD630=<630 SDP>  TCTERM=<terminal> \
+		    TC630=<install dir> <action>
+
+		 The <...>'s have the followings meanings:
+
+		 <630 SDP> - full path name to the 630 MTG Software
+			     Development Package. It is needed only
+			     if TCTERM = 630 or all. It defaults to
+			     /usr/opt/630.
+
+		 <terminal> - terminal for which the <action> is to take place.
+			      Possibles values are:
+				 630 - 630 MTG
+				 dmd - 5620 DMD (no operation)
+				 all - both 630 and dmd (no operation)
+			      It defaults to 630.
+
+		 <install dir> - full path name to where the product will be
+				 installed. This is needed only for the install
+				 action. There is no default.
+
+		 <action> - defines the action to be done. Possible actions
+			    are: build - just make the products
+				 install - install the products
+				 clean - remove .o's
+				 clobber - remove the products under the source
+					   directory
+			    The default action is build.
+
+		 requirements: the following directories must already exist
+			       to do the install action:
+				$TC630/bin
+				$TC630/man
+				$TC630/lib/dmdtools
+				$TC630/lib/630
+
+		 example: make TCTERM=all install
+			  # makes and installs for the 630 MTG.
+
+EXECUTION: To run the program, the shell environment variable TC630 must
+           be set and exported to the same value as used to build xucache.
+           The manual page describes how xucache works.
+

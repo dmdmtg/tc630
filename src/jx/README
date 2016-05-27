@@ -1,0 +1,56 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+# @(#)README	1.1.1.3   (6/20/90)
+
+PROGRAM: xjx
+
+DESCRIPTION: stdio interpreter for the 630 MTG. Following stdio
+	     functions are supported:
+		getc     getchar  fgets    fflush   putc
+		putchar  puts     fputs    fopen    freopen
+		fclose   access   popen    pclose   fread 
+		fwrite   printf   Printf   fprintf  Fprintf
+
+TERMINAL: 630  MTG.
+
+COMPUTER: 3B2
+	  3B20
+	  VAX
+	  AMDAHL
+
+OPERATING SYSTEM: UNIX System V Release 2 or 3 
+
+BUILD PROCEDURE: make TC630=<install dir> TCTERM=<630> <action>
+
+		where:
+
+		 <install dir> - where the products will be installed
+
+		 <630> - defines the terminal type as 630 MTG.
+
+		 <action> - defines the action to be done. Possible actions
+			    are: build - just make the products
+				 install - install the products
+				 clean - remove .o's
+				 clobber - remove the products  & .o's under
+				 the source (src) directory.
+			    The default action is build.
+
+		 requirements: the following directories must already exist
+			       to do the install action:
+				$TC630/bin
+				$TC630/man
+				$TC630/lib/dmdtools
+
+		example: make TCTERM=630 install.
+			 makes and installs for the 630 MTG.
+
+EXECUTION: To run the program, the shell environment variable TC630 must
+           be set and exported to the same value as used to build xjx.
+           The manual page describes how xjx works.
+

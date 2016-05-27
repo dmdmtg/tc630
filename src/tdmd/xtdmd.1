@@ -1,0 +1,52 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.if \nZ \{\
+.TH XTDMD 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH TDMD 1 TOOLCHEST\}
+.SH NAME
+tdmd \- graphics filter for plot(4) format files
+.SH SYNOPSIS
+\fBtdmd\fR [\fB-Vc\fP]
+.SH DESCRIPTION
+\fItdmd\fP is a filter for AT&T
+Dot-Mapped Display terminals (5620 DMD and 630 MTG) that is equivalent to members
+of the set of plot filters
+described in \fItplot(1)\fP.  These filters are used to convert graphical
+data described by \fIplot(4)\fP for display on various terminals.
+Normally, the cover script \fItplot\fP is used, instead of a
+particular filter, and \fItplot\fP determines which filter to use. 
+This only works, however, for filters known to \fItplot\fP.  \fItdmd\fP must 
+be used explicitly. 
+.P
+The \fB-V\fP option causes \fItdmd\fP to print a message that
+identifies which version it is.
+.P
+The \fB-c\fP option, available only for the 630 MTG, results in the \fItdmd\fP 
+program being kept \fI(cached)\fP in the terminal's RAM memory after 
+quitting \fItdmd\fP.  The next invocation of \fItdmd\fP will bring
+up the program quickly without having to download it.  Use the 630 MTG \fIucache(1)\fP
+program to remove \fItdmd\fP from the terminal's cache. 
+.SH EXAMPLE
+The following pipeline will yield a simple graph on the 630 MTG:
+.ce
+echo 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 | graph | tdmd
+.if \nZ \{\
+.SH FILES
+.ta 3i
+$TOOLS/lib/dmdtools/xtdmd	host support for \fIxtdmd\fP
+.br
+$TOOLS/lib/630/xtdmd.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xtdmd.m	terminal support for the 5620 DMD\}
+.SH SEE ALSO
+graph(1), tplot(1), plot(3X), plot(4)
+in the \fI\s-1UNIX\s+1 System V Programmer Reference Manual\fP.
+.br
+ucache(1) in the \fI630 MTG Software Reference Manual\fP.

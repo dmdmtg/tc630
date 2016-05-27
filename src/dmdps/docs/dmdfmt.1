@@ -1,0 +1,82 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.TH DMDFMT 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdfmt \- bitmap formatter
+.SH SYNOPSIS
+.I dmdfmt 
+[-T printer type]
+[ infile ]
+.SH DESCRIPTION
+.PP
+.I Dmdfmt
+formats bitmap images for output on various printers.
+.I Dmdfmt
+accepts as input an encoded file as created by
+.I dmdps,
+and
+.I brush.  
+.I Dmdfmt 
+knows about the following printer types:
+.TP
+.BI dots 
+Line printer format (dots and spaces.)
+.TP
+.BI 450
+Diablo 450 format.
+.TP
+.BI hex
+Hex format.
+.TP
+.BI printronix
+Printronix format.
+.TP
+.BI qms
+QMS Lasergraphics format.
+.TP
+.BI ci8510b
+C.Itoh 8510B format.
+.TP
+.BI fx-80
+Epson FX-80 format.
+.TP
+.BI laserjet
+Hewlett Packard 2686A (LaserJet) format.
+.TP
+.BI hpink
+Hewlett Packard 2225C (ThinkJet) format.
+.TP
+.BI i300
+Imagen Impress format (default.)
+.sp
+.SH "EXAMPLES"
+dmdscale -h3 -w3 BLITMAP | dmdfmt -Ti300 | i300 -l impress -d ihXXX
+.sp
+The above command will format the bits contained in BLITMAP for
+output on the Imagen 8/300 at rje destination ihXXX.
+.PP
+cat layerx | dmdfmt -T qms | qpr -q
+.sp
+The above command will format the bits for output on a QMS Lasergraphics
+printer.
+.PP
+dmdfmt -T dots BLITMAP
+.sp
+The above command will output to your terminal the bitmap contained in
+BLITMAP in a spaces and dot format.
+.SH "WARNING"
+The Hewlett Packard LaserJet can only print about 1/2 a screen before
+running out of memory. 
+.SH "BUGS"
+dmdfmt doesn't use the same bitmap formatting code or printer formatting 
+description (pfd) files that dmdps does.
+.SH "SEE ALSO"
+.IR "layers(1), dmdrot90(1), dmdscale(1), dmdps(1), dmdpr(1)."

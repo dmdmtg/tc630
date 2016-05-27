@@ -1,0 +1,97 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+### Standard Targets ###
+
+build install clean clobber:
+	@if [ "$(TCTERM)" = dmd ]; \
+	then \
+		$(MAKE) $(MACROS5620) ACTION=$@ subdirdmd $@dmd; \
+	elif [ "$(TCTERM)" = all ]; \
+	then \
+		$(MAKE) $(MACROS5620) ACTION=$@ subdirdmd $@dmd; \
+		$(MAKE) $(MACROS630) ACTION=$@ subdir630 $@630; \
+	elif [ "$(TCTERM)" = 630 ]; \
+	then \
+		$(MAKE) $(MACROS630) ACTION=$@ subdir630 $@630; \
+	else \
+		echo make: Invalid terminal type \`$(TCTERM)\'; \
+		exit 1; \
+	fi
+
+subdirdmd:
+	@DS="$(SUBDIRS5620)"; \
+	 for D in $$DS; do \
+	    (set -x; cd $$D; \
+	    exec $(MAKE) $(MACROS5620) $(ACTION)); \
+	 done
+
+subdir630:
+	@DS="$(SUBDIRS630)"; \
+	 for D in $$DS; do \
+	    (set -x; cd $$D; \
+	    exec $(MAKE) $(MACROS630) $(ACTION)); \
+	 done
+
+builddmd: $(PRODUCTS5620)
+	@echo make: made $@
+
+build630: $(PRODUCTS630)
+	@echo make: made $@
+
+installdmd: $(INSTALL5620) striphost
+	@echo make: made $@
+
+install630: $(INSTALL630) striphost
+	@echo make: made $@
+
+striphost:
+	@IH="$(INSTALLHOST)"; \
+	 for I in $$IH; do \
+	    if [ -f "$$I" ]; then \
+		(set -x;strip $$I); \
+	    fi; \
+	 done
+
+buildhost: $(PRODUCTSHOST)
+installhost: $(INSTALLHOST) striphost
+cleanhost: cleanhosthere
+clobberhost: clobberhosthere
+
+buildhost installhost cleanhost clobberhost: 
+	@DS="$(SUBDIRSHOST)"; \
+	 for D in $$DS; do \
+	    (set -x; cd $$D; \
+	    exec $(MAKE) $(MACROS) $@); \
+	 done
+	@echo make: made $@
+
+# some systems cannot take rm -f of nothing so add "xx" in case variable empty
+cleandmd:
+	rm -f xx $(CLEAN5620)
+	@echo make: made $@
+
+clean630:
+	rm -f xx $(CLEAN630)
+	@echo make: made $@
+
+cleanhosthere:
+	rm -f xx $(CLEANHOST)
+
+clobberdmd:	cleandmd
+	rm -f xx $(CLOBBER5620)
+	@echo make: made $@
+
+clobber630:	clean630
+	rm -f xx $(CLOBBER630)
+	@echo make: made $@
+
+clobberhosthere: cleanhosthere
+clobberhosthere:
+	rm -f xx $(CLOBBERHOST)
+
+### Additional Dependencies ###

@@ -1,0 +1,651 @@
+.if \nZ \{\
+.TH XCIP 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH CIP 1 TOOLCHEST\}
+.SH NAME
+.if \nZ \{\
+xcip\}
+.if !\nZ \{\
+cip\}
+\- interactive object-based drawing system based on pic for DMD 5620,
+MTG 630/730, X-window terminals and Sun workstations.
+.SH SYNOPSIS
+.if \nZ \{\
+\fBxcip\fP\}
+.if !\nZ \{\
+\fBcip\fP\}
+[\fB-v\fP] [-t dmd|mtg|sun|x] [X-window options]
+.SH DESCRIPTION
+.if \nZ \{\
+Note:
+.I xcip
+is the exptools version of the
+.I cip
+program.  From here on in this man page when you see
+.IR cip ,
+read it as
+.IR xcip .
+.P\}
+.I Cip
+is an interactive drawing system for AT&T Teletype's DMD 5620 and MTG
+630/730 bitmap display terminals. 
+It will also work on X-window systems such as Sun workstations running
+Openwin and 730X terminals.
+.P
+Using a set of predefined 
+.IR pic (1)
+shapes, the user draws and edits objects to construct pictures on the 
+screen of the terminal.  
+These pictures can be stored in a file and later formatted 
+for output to a typesetter using
+.IR pic (1)
+and
+.IR troff (1).
+.P
+If the
+.B -v
+option is used,
+the versions of
+.I cip
+and the host program
+.I jpic
+are printed (and the editor is not brought up).
+.P
+The 
+.I cip
+shell script trys to load the appropriate version of
+.I cip
+depending on whether your terminal is a 5620, 630/730 or X-window system.
+This can be specified explicitly by using the optional 
+.B -t
+parameter.
+.P
+For X-window systems, options such as 
+.B -rv
+for reverse video and
+.B -geometry
+to specify window geometry and placement can be used.
+For example, to place the
+.I cip
+window in upper left hand corner use:
+.B -g +0+0
+.P
+For the 630 MTG, the
+.I cip 
+program is automatically saved
+.I (cached)
+in the terminal's RAM memory.
+The next invocation of 
+.I cip 
+will bring up the program quickly without having to download it.
+To remove
+.I cip 
+from the terminal's memory without having to power it down use the 630 MTG
+.I ucache(1)
+program. 
+.SH SETUP
+If you are using a 5620, 630 or 730 terminal, 
+you must have the environment variable 
+.B DMD
+set to the appropriate DMD software directory (and exported).
+For the DMD 5620 terminal, this must be the DMD 2.0 SGS.
+(If the old version is used, you will get hundreds of multiply
+defined messages when
+.I cip
+is invoked.)
+For Computation Center machines this is typically:
+.PP
+DMD=/usr/add-on/dmd2.0   (for DMD 5620)
+.PP
+DMD=/usr/add-on/630      (for 630 MTG)
+.PP
+Make certain you have the exptools bin and $(DMD)/bin on your path.
+.SH WINDOWS
+For 5620, 630 or 730 terminals, create a small window and invoke 
+.I cip
+in it.
+(The first \fIlayers\fR window receives system
+messages and thus is not available for 
+.IR cip .)
+After 
+.I cip
+downloads, a menu will be available on mouse button 3 to open the editor
+window.
+.P
+The 
+.I cip
+editor window consists of five areas.
+The topmost area contains 7 buttons, one for each shape available for 
+drawing (i.e., circle, box, ellipse, line, arc, spline and text).
+The large middle area is used for drawing and editing pictures.  
+At the bottom are three areas:
+the leftmost shows information, error messages and file names;
+the middle area will show a button when editting a macro (click on
+button to leave macro edit mode);
+and the rightmost shows the mouse button functions currently available.
+.SH MOUSE
+The mouse is used for selection of all menu items, selection of 
+shapes, and editing of objects in the picture area.  Button one is 
+usually used to select a shape or an object, button two is used 
+to edit a selected object, and button three displays a menu which is 
+applicable to the current state of
+.I cip.
+.TP
+.B "Button 1"
+Select a shape to draw with by clicking mouse button 1 on the desired shape 
+button in the top area.
+The shape can then be used
+to draw an object in the picture area (see Button 2).  
+.sp
+If mouse button one is pressed while in the picture area then an
+enclosing object is selected for editing.
+In case of overlapping objects, repeated pressings of button one will
+run through the possibilities.
+The object selected is blanked out as long as button one is pressed.  
+If the object is text, then an edit marker (an upward pointing triangle)
+can be placed within the text by moving the mouse 
+.B while
+holding button 1 down.
+If there is no object on the screen or if the mouse 
+cursor is far enough away from all objects, then clicking button 1
+returns 
+.I cip
+to its original nothing-selected state.
+.sp
+Pressing mouse button one on the \fIedit depth\fP button at the
+bottom of the screen (shown
+only when editing macros) exits one level of macro editing.
+.TP
+.B "Button 2"
+Mouse button two is only active when either an object or a shape has been
+selected.  
+If a shape is selected, button two is used
+for drawing objects in the picture area.
+If an object is selected, button two is used for either moving the
+object or changing its shape, depending on whether the object was selected
+(via button one) near its center or near its edge, respectively.
+.TP
+.B "Button 3"
+Mouse button three is used to provide a menu of operations that is either
+of a general nature or specific to a selected shape or object.
+.IP
+The general menu is brought up by pressing button three when no object nor
+shape has been selected and provides the following operations:
+.TP 15
+.I "Get file"
+Read a file (in restricted
+.I pic
+format), adding its contents to the screen.
+The user is first prompted for a file path name.
+Once the global file definitions have been read, a rectangle
+will appear on the screen showing the overall size of the file to be read.  
+Clicking button one brings the picture in centered in the screen
+(but aligned to grid points).
+Alternatively, the picture may be moved to a new location by depressing 
+button two.
+.TP
+.I "Put file"
+Writes the screen's contents into a file in 
+.I pic
+format.
+Again, the user is prompted for a file path name.
+If the file already exists, it is copied to the user's home directory
+under the file name: 
+.I cip.backup.
+.TP
+.I "Clear screen"
+Clear screen, removing the diagram from the editor.
+This function asks if you are sure, requiring a confirming click of button
+three or an aborting click of button one or two.
+.TP
+.I "Redraw screen"	
+Removes any garbage on screen that may result from interactions with
+other windows.
+.TP
+.I "Define macro"
+A very useful function for grouping objects into a new entity.  
+Button 2 is used to draw a box around objects to be included in a "macro"
+in the pic terminology.
+.TP
+.I "Undo"
+Undoes the last operation on an object.
+A second undo immediately following the first returns the 
+object to its changed state.
+.TP
+.I "Show grid"
+Display (or turn off) a grid (via a secondary menu to the right of the main 
+menu).
+The user can select the distance between grid points.  The user can
+set the grid distance to follow changes in alignment, or the user
+can force the grid to a specific size independent of the alignment
+setting.  The range of sizes available in the forced grid mode
+starts at 4 by 4 and goes up to 16 by 16.
+.sp
+If the user has set the grid to follow the alignment, the grid will
+be redrawn when the user changes the alignment.  If in this mode,
+the user chooses an alignment finer than 4 by 4, the grid will be
+removed because a grid smaller than 4 by 4 is so small that it is
+not useful.  When the alignment is increased to a larger value of
+at least 4 by 4 the grid will be restored.
+.sp
+If the user has set the grid to a size independent of the alignment
+setting, the grid will remain on the screen in the size selected no
+matter what the alignment is subsequently set to.
+.TP
+.I "Alignment"
+Whenever objects are drawn or edited, the coordinates of the
+objects are forced to be aligned to an imaginary set of grid
+points.  The granularity of this imaginary grid is selected via a
+secondary menu to the right of the main menu.
+The choices are any number between 1 and 16.
+.sp
+This imaginary grid is independent of the grid that the user can
+display using the "Show Grid" menu item.
+The displayed grid can be set to track alignment changes or to
+remain at a fixed value independent of alignment changes.  The
+preceding section on grid controls explains how the grid operates.
+.sp
+The smaller the alignment selected, the more freedom the user will
+have in placing objects.  Using a larger alignment size helps keep
+symbols lined up with each other.
+The default alignment size corresponds to an 8 by 8 grid.
+.sp
+From the point of view of alignment, it is important to understand
+that objects always snap to an imaginary grid based on the current
+alignment setting.  Since the displayed grid setting does not have
+to match the alignment setting, drawn objects will snap to the
+displayed grid only if the two settings match.
+.sp
+To allow for more flexibility in placing text, text objects are
+allowed to be placed at an alignment value which is about half the
+current alignment setting.  So if the alignment is set to 8, text
+objects can be placed in 4 pixel increments.
+.sp
+When a file is read in via the "Get File" menu command, the objects
+in that file are placed at the coordinates specified in the file
+without any regard to the current alignment settings.  If the file
+was originally created with a different alignment setting than that
+which is currently in use, the objects that are loaded in may not
+line up properly with the newly drawn objects.
+.TP
+.I "Information"
+Prints remaining memory available in the DMD & MTG terminal and
+the UNIX directory from which
+.I cip
+was down-loaded.
+.TP
+.I "Version"
+Prints the
+.I cip
+version.
+.TP
+.I "Display Scale"
+When an object is being drawn or a previously drawn object is
+selected and is being edited, information about that object is
+displayed in the message window.  This information includes the
+type of object, the pixel coordinates of the interesting parts of
+the object, and the height, width, length, diameter, or radius of
+the object, as appropriate.
+.sp
+This secondary menu to the right of the main menu allows the user
+to control how the height, width, length, diameter, or radius value
+is displayed.  There are two things that can be controlled:
+(1) the numeric part of the display can be scaled down by a scale
+factor, and (2) one of several labels representing common units of
+measurement can be displayed after the number.
+.sp
+These two things can be turned on separately or together.
+The scale factor used to scale the pixel dimensions down can be
+changed independently of the label that is displayed.
+.sp
+For example, if the user has selected a line object that happens to
+be 104 pixels long, the message window would normally say:
+.sp 0.25
+	Line: length=104
+.sp 0.25
+If the user turns on the scale factor feature and sets the scale
+factor to 10, the display now shows:
+.sp 0.25
+	Line: length=10.4
+.sp 0.25
+The dimension to be printed is divided by the scale factor before
+printing.  The number of digits printed after the decimal point is
+determined by the size of the scale factor.  Scale factors between
+1 and 10, inclusive, get one digit after the decimal point.  Scale
+factors greater than 10 but less than or equal to 100 get two
+digits, and any scale factor greater than 100 gets three digits.
+.sp
+The label part of this facility allows the user to have one of
+several possible labels appended to the number printed.  The
+choices are:
+.nf
+.ta 0.5i 2i
+	inches	(displayed as  " )
+	feet and inches	(displayed as  '  " )
+	feet	(displayed as  ' )
+	yards	(displayed as   yd. )
+	miles	(displayed as   mi. )
+	millimeters	(displayed as   mm )
+	meters	(displayed as   m )
+	kilometers	(displayed as   km )
+.ta 0.5i
+.fi
+.sp
+Using the same values from our first example, if the label was set
+to miles, the message window would say:
+.sp 0.25
+	Line: length=104 mi.
+.sp 0.25
+The way that this operates is for the most part very
+straightforward.  The only confusing one is "feet and inches".
+.sp
+When the option "feet and inches" is chosen, the units of the
+dimension are taken to be inches, but before it is displayed the
+dimension value is divided by 12 to find the number of feet.  The
+remainer from this division is the number of inches.
+Using our same example, 104 inches is eight feet and eight inches,
+so the message window now would say:
+.sp 0.25
+	Line: length=8'8"
+.sp 0.25
+If a scale factor is set it is applied to the dimension value
+before it is divided by twelve, and the extra decimal points are
+displayed with the inches.  So, for the same example, this time
+with a scale factor of 5, we get:
+.sp 0.25 
+	Line: length=1'8.8"
+.sp 0.25
+( Because 104 inches divided by 5 is 20.8 inches.  Divide 20.8 by 12 we
+get one foot with a remainder of 8.8 inches.)
+.sp
+This feature, feet and inches, can be really interesting when used
+with scale factor 1, an alignment of 1, and a grid forced to 12.
+You can move objects in one inch increments, see grid lines every
+foot, and your dimensions are shown in feet and inches.  You have a
+drawing area that is about 58 feet square.
+.TP
+.I "Close window"
+Returns to the layer window initially used when 
+.I cip
+was downloaded.
+The current picture is saved - re-opening the editor window will redraw the
+picture.
+The option
+.I "Quit editor"
+is available in the closed window menu to leave 
+.IR cip .
+WARNING: the 
+.I "Quit editor"
+option does 
+.B not 
+check if the current diagram has been written out!
+.PP
+.TP
+.sp 1
+.B "        "
+If the box, line, spline, or text shape is selected, button three brings
+up a menu used to set global defaults. 
+.TP 15
+.I "Arrows"
+Sets whether lines and splines drawn
+in the future will have \fINo arrows\fR or arrows at the \fIStart end, 
+Finish end\fR or \fIBoth ends\fR; via a secondary menu to the right of
+the main menu.
+.TP
+.I "Density"
+Sets line density of lines and boxes to either \fISolid\fP,
+\fIDashed\fP, or \fIDotted\fP.
+.TP
+.I "Point size"
+Sets point size for text; via a secondary menu to the right of the
+main menu.
+This includes all point sizes supported on the DMD 5620 and 630 MTG.
+Note, however, that your particular printer may not support all of these.
+.TP
+.I "Font style"
+Sets style of text.  
+Includes all font styles supported on the DMD 5620 and 630 MTG.
+Again, your particular printer may not support all of these.
+.TP
+.I "Justify"
+Sets text justification to \fILeft, Center,\fR or \fIRight\fR.
+.TP
+.I "Spacing"
+Sets spacing between text lines in multi-line text.
+.PP
+.TP
+.sp 1
+.B "        "
+If an object in the picture area is selected, depressing button three
+displays a menu allowing reasonable operations on the selected object.
+Common operations are:
+.TP 15
+.I "Delete"
+Deletes selected object.
+.TP
+.I "Copy"
+Copies selected object.
+Use button 2 to place the new object.
+If the object is a macro, the copied objects all share the same macro
+definition.
+That is, if you edit a macro, all other copies of that macro will be
+updated also.
+.TP
+.I "Reflect x"
+Reflect around the x-axis.
+.TP
+.I "Reflect y"
+Reflect around the y-axis.
+.TP
+.I "Arrow"
+Place an arrow on (or remove an arrow from) the nearest end of the line or
+spline selected.
+.TP
+.I "Density"
+Adjust the density of a line or box via a secondary menu to the right
+of the main menu.
+.TP
+.I "Edit"
+Edit components of a selected macro.
+Exit edit mode by selecting the \fIedit depth\fP window in the middle
+area at the bottom of screen.
+.TP
+.I "Separate"
+Separate a macro into component parts or multi-line text into separate
+single lines.
+Warning: currently there is no way to combine separate single lines of text
+into a single multi-line text.
+.SH KEYBOARD
+The keyboard is used to enter and edit text in the picture.
+The following commands (which are a subset of emacs commands with some 
+extensions) are available:
+.PD 0.2v
+.TP 15
+.I "CNTL-A"
+Move to start of line.
+.TP
+.I "CNTL-B"
+Move back one character.
+.TP
+.I "CNTL-C"
+Capitalize next character.
+.TP
+.I "CNTL-D"
+Delete next character.
+.TP
+.I "CNTL-E"
+End of line.
+.TP
+.I "CNTL-F"
+Forward one character.
+.TP
+.I "CNTL-H"
+Delete previous character.
+.TP
+.I "CNTL-K"
+Kill text after the cursor.
+.TP
+.I "CNTL-U"
+Delete all previous text.
+.TP
+.I "CNTL-W"
+Delete previous word.
+.TP
+.I "CNTL-Y"
+Retrieve last deletion.
+.TP
+.I "Return"
+Create new line.
+.TP
+.I "ESC b"
+Move back one word.
+.TP
+.I "ESC d"
+Delete next word.
+.TP
+.I "ESC CNTL-H"
+Delete previous word.
+.TP
+.I "ESC f"
+Move forward one word.
+.TP
+.I "ESC <n> <cmd>"
+Repeat "n" times the command "cmd".
+.PD
+.P
+The text mode is left by clicking a mouse button.
+Note: The character sequence \\(xx will not be printed: instead it will be 
+interpreted by troff (for example, use \\(bu for bullets).
+.P
+The keyboard is also used to enter and edit file names. 
+In this case, entering an Escape or Return character, or clicking a mouse
+button, will leave this text mode.
+.P
+The last file name is retained by the editor between operations.  
+This is to facilitate
+frequent writes to keep the host updated as a new file is being entered.
+However, care must be taken to backspace over or delete the original name 
+and enter a new one when it is desired to leave the original file intact.
+.SH PRINTING DIAGRAMS
+Diagrams can be printed on any printer that supports 
+.IR troff (1).
+The shell
+.IR ciprint (exptools-1)
+provides a convenient command to print cip-generated pic files 
+on either the Xerox, the Imagen or Postscript printer.
+.P
+The diagrams can also be included in documents by using the following:
+.P
+.nf
+	\.DS CB
+	\.PS < pic-file-name
+	\.DE
+.fi
+.P
+If the diagram has splines, make sure that the character "~" is
+not redefined. 
+For example, a common line in the front of documents is: 
+.P
+.nf
+	\.tr ~
+.fi
+.P
+This operation must be canceled before the pic file containing splines by
+issuing:
+.P
+.nf
+	\.tr ~~
+.fi
+.if \nZ \{\
+.P
+The pic(1) command must be run before the troff(1) command.
+Look at the ciprint(exptools-1) shell for an example command
+sequence and parameters.
+The
+.IR exmmx (exptools-1) 
+shell is a convenient command for printing documents containing
+pic on Xerox.
+.SH FILES
+.ta 2i
+.br
+bin/xcip	shell script for executing
+.I xcip
+.br
+lib/dmd/xcip.m	DMD 5620
+.I xcip
+program
+.br
+lib/dmd/xcip.m	630/730 MTG
+.I xcip
+program
+.br
+lib/x/xcip	X-window
+.I xcip
+program
+.br
+bin/xjpic	program used by 
+.I xcip
+to parse pic files\}
+.SH SEE ALSO
+.I "Cip User's Manual: One picture is Worth a Thousand Words,"
+Sally A. Browning, TM-82-11276-1.
+.br
+pic(1), troff(1), 
+proof(dmd-1) & ucache(dmd-1).
+.SH WARNINGS
+We recommend that DMD 5620 terminals have 1 Meg RAM memory 
+so that there will be sufficient space to hold your pictures.
+MTG 630/730 need more than the minimum 640K memory.  Either add
+the 512K memory board or a Starlan-10 card with 2 or 4 Meg RAM.
+For the MTG 730+ terminal, just add 2 or 4 of standard 1 Meg SIMMs.
+.PP
+On VAXes, do not use a large path name (greater than about 50 characters)
+on put file as it will cause
+.I cip
+to abort!
+.PP
+Defining pictures which are too large for the picture frame can have
+disastrous results when stored and read back.
+.PP
+.I Cip
+relies on the host machine only for file transfers.  
+If the host crashes while you are creating or modifying a picture, 
+there will be no way to save the picture.
+.B Frequent stores are recommended. 
+.PP
+The size of your text shown will not necessarily be the same when printed
+as printers vary.
+Moral: leave plenty of room for your text.
+.PP
+The vertical bar character ("|") in multi-line text strings or in any text
+string inside a macro can not be read in. 
+.PP
+.I Cip
+can not read in an arbitrary pic file since pic has features not supported
+in the graphical editor.
+.PP
+There are numerous fixed limits in the host program,
+.IR jpic ,
+used in reading a pic file into 
+.I cip.
+Thus it is quite possible to create and write out a diagram that can not
+be read back in.
+To discover why a file can not be read by 
+.I cip
+do: "jpic 
+.I your-file
+> temp".
+The standard error messages, if any, will report where the problem exists.
+.PP
+Objects are drawn on the screen using XOR mode.  
+This means that two identical objects placed on top of each other
+will not appear on the screen.
+However, the object will be printed.
+.SH UNEXPECTED BEHAVIOR
+.PP
+Rectangles drawn with odd (eg. 1, 3, 5, ...) alignment values tend
+to crawl around the page when the file is written and later re-read by
+.IR cip .
+All other object types work well at any alignment value.
+Using only even alignment values when drawing rectangles is
+recommended as a temporary workaround.

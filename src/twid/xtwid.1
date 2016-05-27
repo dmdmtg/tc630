@@ -1,0 +1,92 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.ds ZZ CORE PACKAGE
+.if \nZ \{\
+.TH XTWID 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH TWID 1 TOOLCHEST\}
+.SH NAME
+twid \- an interactive drawing program 
+.SH SYNOPSIS
+\fBtwid\fP [\fB-Vc\fP]
+.SH DESCRIPTION
+The
+.IR twid\^
+utility
+is an interactive drawing program that runs on AT&T Dot-Mapped Display terminals
+(5620 DMD and 630 MTG).  The terminal must be operating in the layers environment
+before downloading \fItwid\fP [see \fIlayers(1)\fP].
+It allows the user to draw and "paint" pictures 
+with the mouse. 
+.P
+The \fB-V\fP option causes \fItwid\fP to print a message that
+identifies which version it is.
+.P
+The \fB-c\fP option specifies that \fItwid\fP is to be stored in the
+terminal's application cache.  It is only available for the 630 MTG.
+.SH "MOUSE BUTTONS"
+Buttons 1 and 2 are used for drawing. The drawing modes can be
+changed by selecting an option on the 
+.B buttons
+menu (see
+.B buttons
+below).
+Button 3
+raises the "supermenu" (a menu with menus as selections).
+.SH "MENU OPTIONS"
+The
+.I twid
+utility
+has six functional menus.  All are options on the Supermenu.
+Each is described below:
+.TP 10
+.B style
+This functional menu permits the user to choose from a variety of drawing tools.
+.TP
+.B texture
+This functional menu allows the user to use a group of textures as "paint" and
+also to create his or her own textures.
+.TP
+.B brush
+This functional menu allows the user to select from a variety of brush sizes and also lets the user create their own.
+.TP
+.B buttons
+This functional menu lets the user determine the storage modes
+that buttons one and two use for drawing
+(\f3\s-1OR\s+1\f1, \f3\s-1XOR\s+1\f1, \f3\s-1CLEAR\s+1\f1, \f3\s-1STORE\s+1\f1;
+these correspond to the logical functions or, exclusive-or, clear and copy).
+.TP
+.B copy
+This functional menu permits the user to copy and rotate portions of the layer.
+.TP
+.B unix
+This functional menu allows the user to write and read bitmaps to and from files stored previously by 
+.I twid
+on the host machine.
+This menu also allows the user to exit the 
+.I twid
+program 
+and  return to 
+.I layers(1).
+.TP
+.B "clear all"
+This option allows the user to sweep out a rectangle and clear portions of the
+.I twid
+layer.
+.if \nZ \{\
+.SH FILES
+.ta 3i
+$TOOLS/lib/dmdtools/xtwid	host support for \fIxtwid\fP
+.br
+$TOOLS/lib/630/xtwid.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xtwid.m	terminal support for the 5620 DMD\}
+.DT
+.SH SEE ALSO
+layers(1) in the \fIUNIX System V Programmer Reference Manual\fP.

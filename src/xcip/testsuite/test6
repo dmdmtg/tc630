@@ -1,0 +1,127 @@
+.nf
+.PS
+scale=100
+define t174 |
+[ box invis ht 46 wid 114 with .sw at 0,0
+"\f(CW\s16\&Constant\f1\s0" at 4,34ljust
+"\f(CW\s16\&Width\f1\s0" at 4,11ljust
+] |
+
+define t168 |
+[ box invis ht 50 wid 82 with .sw at 0,0
+"\fB\s16\&Roman\f1\s0" at 4,37ljust
+"\fB\s16\&Bold\f1\s0" at 4,12ljust
+] |
+
+define t165 |
+[ box invis ht 50 wid 76 with .sw at 0,0
+"\fI\s16\&Roman\f1\s0" at 4,37ljust
+"\fI\s16\&Itallic\f1\s0" at 4,12ljust
+] |
+
+define t161 |
+[ box invis ht 50 wid 119 with .sw at 0,0
+"\f(HI\s16\&Helvectica\f1\s0" at 4,37ljust
+"\f(HI\s16\&Itallic\f1\s0" at 4,12ljust
+] |
+
+define t158 |
+[ box invis ht 68 wid 480 with .sw at 0,0
+"\f(CW\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,56ljust
+"\f(CW\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,33ljust
+"\f(CW\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,10ljust
+] |
+
+define t154 |
+[ box invis ht 74 wid 441 with .sw at 0,0
+"\fH\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\fH\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\fH\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+define t190 |
+[ box invis ht 50 wid 120 with .sw at 0,0
+"\f(HB\s16\&Helvectica\f1\s0" at 4,37ljust
+"\f(HB\s16\&Bold\f1\s0" at 4,12ljust
+] |
+
+define t194 |
+[ box invis ht 52 wid 86 with .sw at 0,0
+"\f(PI\s16\&Palatino\f1\s0" at 4,38ljust
+"\f(PI\s16\&Itallic\f1\s0" at 4,12ljust
+] |
+
+define t195 |
+[ box invis ht 78 wid 445 with .sw at 0,0
+"\f(PI\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,64ljust
+"\f(PI\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,38ljust
+"\f(PI\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,12ljust
+] |
+
+define t193 |
+[ box invis ht 78 wid 439 with .sw at 0,0
+"\f(PA\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,64ljust
+"\f(PA\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,38ljust
+"\f(PA\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,12ljust
+] |
+
+define t187 |
+[ box invis ht 74 wid 455 with .sw at 0,0
+"\f(HB\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\f(HB\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\f(HB\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+define t150 |
+[ box invis ht 74 wid 452 with .sw at 0,0
+"\f(HI\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\f(HI\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\f(HI\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+define t186 |
+[ box invis ht 74 wid 447 with .sw at 0,0
+"\fB\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\fB\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\fB\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+define t182 |
+[ box invis ht 74 wid 453 with .sw at 0,0
+"\fI\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\fI\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\fI\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+define t178 |
+[ box invis ht 74 wid 426 with .sw at 0,0
+"\fR\s16\&abcdefghijklmnopqrstuvwxyz\f1\s0" at 4,61ljust
+"\fR\s16\&ABCDEFGHIJKLMNOPQRSTUVWXYZ\f1\s0" at 4,36ljust
+"\fR\s16\&0123456789!@#$%^&*()-_=+[]{}\\\\`~'\";:<>,./?\f1\s0" at 4,11ljust
+] |
+
+box invis ht 765 wid 620 with .sw at 0,0
+t174 with .nw at -2,57
+"\fR\s16\&Roman\f1\s0" at 3,672 ljust
+"\fB\s24\&\f1\s0" at 326,682
+"\fB\s24\&Fonts\f1\s0" at 275,746
+t168 with .nw at -2,538
+t165 with .nw at -2,618
+"\fH\s16\&Helvectica\f1\s0" at 3,432 ljust
+t161 with .nw at -2,378
+t158 with .nw at 142,68
+t154 with .nw at 142,470
+t190 with .nw at -2,298
+"\f(HB\s14\&\f1\s0" at 35,274 ljust
+"\f(HB\s10\&\f1\s0" at 27,284 ljust
+"\f(PA\s16\&Palatino\f1\s0" at 3,191 ljust
+"\f(PA\s16\&\f1\s0" at 219,183 ljust
+t194 with .nw at -2,138
+t195 with .nw at 142,151
+t193 with .nw at 142,231
+t187 with .nw at 142,310
+t150 with .nw at 142,390
+t186 with .nw at 142,550
+t182 with .nw at 142,630
+t178 with .nw at 142,710
+.PE

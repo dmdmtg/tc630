@@ -1,0 +1,75 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.TH DMDPR 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdpr \- pipeline sink for 5620 DMD / 630 MTG attached pritners
+.SH SYNOPSIS
+.I dmdpr
+[-t]
+[-u username]
+.SH DESCRIPTION
+.PP
+.I Dmdpr
+is a UNIX\*(Tm system program that takes its standard input and sends it
+the printer port of a particular user's 5620 DMD/630 MTG.
+To use
+.I dmdpr,
+.I dmdps
+must be running under 
+.I layers 
+in the terminal.
+.I Dmdpr 
+will ensure that the 
+.I dmdps
+process is running and that the printer is not in use
+before downloading any data.
+.TP
+.BI -u " username"
+Login name of user whose printer you wish to use.
+(Defaults to $LOGNAME.)
+.TP
+.BI -t 
+causes 
+.I dmdpr 
+to act as a tee, outputting to both stdout and the printer.
+.PP
+Anything can be sent down the dmdpr pipeline including
+printer-specific escape sequences and formatted bitmap images.
+.SH EXAMPLES
+.sp
+dmdpr < file
+.PP
+The above command will print the file on
+the terminal-attached printer.
+.sp
+pr -e -n\\  file | dmdpr
+.PP
+The above command will expand tabs and print line numbers
+on the listing. A popular command line for the HP inkjet.
+.sp 
+cat makefile | dmdpr -u schnable
+.PP
+The above command will print the makefile on
+schnable's DMD-attached printer.
+.sp
+hrdcpy `cat $HOME/rje/.prtty`
+
+.PP
+The above command will cause all typed commands 
+and all the output produced to be logged on the DMD-attached printer.
+.I Hrdcpy
+is an exptool.
+.SH FILES
+${HOME}/rje/.prtty		contains xt-tty of active dmdps process.
+.PP
+${HOME}/rje/.lck		contains $LOGNAME of current user.
+.SH "SEE ALSO"
+.IR "dmdps(1), dmdscale(1), dmdfmt(1), hrdcpy(1x), tail(1), pr(1)."

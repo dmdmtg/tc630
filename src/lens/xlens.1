@@ -1,0 +1,120 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.ds ZZ CORE PACKAGE
+.if \nZ \{\
+.TH XLENS 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH LENS 1 TOOLCHEST\}
+.SH NAME
+lens \- interactive magnified viewing window 
+.SH SYNOPSIS
+\fBlens\fP [\fB-Vc\fP]
+.SH DESCRIPTION
+.I lens
+is an interactive magnification program for AT&T Dot-Mapped
+Display terminals (5620 DMD and 630 MTG) that allows the user to 
+magnify any portion of a screen on the DMD.
+Magnification is done via a rectangle which takes the place of
+the mouse cursor.  The rectangle acts as a window; anything
+appearing in the window is displayed magnified in a companion window.
+The user has the option of selecting the size and shape of the viewing
+window and the amount of magnification.  Magnification can range 
+from 1x up to 50x.
+.P
+The \fB-V\fP option causes \fIlens\fP to print a message that
+identifies which version it is.
+.P
+The \fB-c\fP option specifies that \fIlens\fP is to be stored in the
+terminal's application cache.  It is only available for the 630 MTG.
+.SH MOUSE
+The mouse is used to move the viewing window around the screen and to
+select menu options.  
+Button 1 is used as a toggle to turn the magnifying window
+on and off.  Button 2 is used to select menu options pertaining to
+\fIlens\fP.  The following is a description of these menu choices:
+.TP 12
+.B "go, stop"
+This menu selection is a toggle for starting
+.RI ( go )
+and stopping 
+.RI ( stop ) 
+.RI lens.
+When selecting \fIgo\fP from the menu, two rectangles are
+displayed in place of the menu.  The smaller rectangle (default: 50x50 pixels) is
+used to select the area to be viewed.  As the mouse is moved, the
+rectangle moves and thereby selects a different section of the screen
+to magnify.  The larger rectangle is the magnified view of the smaller
+rectangle.  Magnification is initially 2x.
+.IP
+Selecting \fIstop\fP from the menu will stop \fIlens\fP and
+restore the mouse cursor to the icon used by the
+current layer.
+.IP
+Button 1 is a short cut method for turning the \fIlens\fP off and on.
+Each depression of the button toggles the previous state of the \fIlens\fP.
+For example, if \fIlens\fP was turned on,
+pressing button 1 will turn \fIlens\fP off.
+.TP
+.B "bigger"
+.I bigger 
+is used to increase the size and magnification of the viewing window.
+Each time the option is
+selected, the window's magnification is increased by the sum of the 
+last two increases; that is,
+the order of magnification is 1x, 2x, 3x, 5x, 8x, 13x, etc.
+The size of the magnification is limited by the amount of available
+memory.
+.TP
+.B "smaller"
+.I smaller
+reverses the magnification performed by
+.IR bigger .
+The viewing window is decreased in size and magnitude in the reverse order 
+of that performed by 
+.IR bigger .
+The window is reduced by one increment each time the
+.I smaller
+menu option is selected.  The smallest magnification is 1x.
+Subsequent selections of
+.I smaller
+after 1x have no affect.
+.TP
+.B "new viewer"
+This option allows the user to define the \fIlens\fP size.  After
+selecting this option, the reshape icon is displayed in place of the menu.
+Button 3 is used to sweep out the new viewing
+rectangle.  Clicking button 1 or 2 cancels the reshape command.
+.TP
+.B "pause"
+This option is only available when the viewing and magnification
+windows are active.  It temporarily stops
+the two windows from tracking the mouse until a mouse button is pressed.  
+This option can eliminate the possibility of mouse movement when
+viewing a portion of the screen.
+Pressing any button will turn
+.I pause
+off.
+.TP
+.B "exit"
+Used to exit the program, this option first displays the sunset
+icon, giving the user a chance to cancel the request.
+Buttons 1 and 2 will cancel the request; button 3 will execute
+it.
+.SH BUGS
+Magnifying a very small window as large as possible does not work properly.
+A magnifying window does get created but no magnified image is
+displayed in it.
+.if \nZ \{\
+.SH FILES
+.ta \w'$TOOLS/src/xlens/xlens.m  'u
+$TOOLS/lib/630/xlens.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmdtools/xlens	host support for \fIxlens\fP
+.br
+$TOOLS/lib/dmd/xlens.m	terminal support for the 5620 DMD\}

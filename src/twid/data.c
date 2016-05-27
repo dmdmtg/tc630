@@ -1,0 +1,127 @@
+/*       Copyright (c) 1987 AT&T   */
+/*       All Rights Reserved       */
+
+/*       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   */
+/*       The copyright notice above does not evidence any      */
+/*       actual or intended publication of such source code.   */
+
+
+static char _2Vsccsid[]="@(#)data.c	1.1.1.2	(11/11/87)";
+
+#include <dmd.h>
+#include "twid.h"
+#ifdef DMD630
+#include <5620.h>
+#endif
+Texture16 black={
+	0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 
+	    0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 
+};
+Texture16 grey={
+	0xAAAA, 0x5555, 0xAAAA, 0x5555, 0xAAAA, 0x5555, 0xAAAA, 0x5555, 
+	    0xAAAA, 0x5555, 0xAAAA, 0x5555, 0xAAAA, 0x5555, 0xAAAA, 0x5555
+};
+Texture16 checks={
+	0xCCCC, 0xCCCC, 0x3333, 0x3333, 0xCCCC, 0xCCCC, 0x3333, 0x3333, 
+	    0xCCCC, 0xCCCC, 0x3333, 0x3333, 0xCCCC, 0xCCCC, 0x3333, 0x3333, 
+};
+Texture16 stip={
+	0x1111,	0x4444,	0x1111,	0x4444,	0x1111,	0x4444,	0x1111,	0x4444,
+	    0x1111,	0x4444,	0x1111,	0x4444,	0x1111,	0x4444,	0x1111,	0x4444,
+};
+/* Some cursors */
+Texture16 pointcur={	/* point mode, but visible */
+	0, 0, 0, 0, 0, 0, 0x0080, 0x01C0, 0x03E0, 0x01C0, 0x0080, };
+Texture16 smallcur={
+	0, 0, 0, 0, 0, 0, 0x03C0, 0x03C0, 0x03C0, 0x03C0 };
+Texture16 medcur={
+	0, 0, 0, 0, 0x0FF0, 0x0FF0, 0x0FF0, 0x0FF0, 
+	    0x0FF0, 0x0FF0, 0x0FF0, 0x0FF0, };
+Texture16 curvecur={
+	0, 0x0080, 0x0140, 0x0220, 0x0410, 0x0808, 0x1004, 0x2002,
+	    0x4081, 0x2002, 0x1004, 0x0808, 0x0410, 0x0220, 0x0140, 0x0080
+};
+Texture16 disccur={
+	0x07E0, 0x1818, 0x300C, 0x6006, 0x4002, 0x8001, 0x8001, 0x8001,
+	    0x8001, 0x8001, 0x8001, 0x4002, 0x6006, 0x300C, 0x1818, 0x07E0
+};
+Texture16 typing={
+	0x0180, 0x0180, 0x0180, 0x0180, 0x0180, 0x0180, 0x0180, 0x0180,
+	    0x0180, 0x0180, 0x3FFC, 0x1FF8, 0x0FF0, 0x07E0, 0x03C0, 0x0180
+};
+Texture16 menucurs={
+	0x0FF0, 0x0810, 0x0810, 0x0810, 0x0810, 0x0FF0, 0x0FF0, 0x0FF0, 
+	    0x0810, 0x0810, 0x0810, 0x0810, 0x0810, 0x0810, 0x0810, 0x0FF0,
+};
+/* sunset is really a skull and cross bones*/
+Texture16 sunset = {
+	0x0000, 0x0000, 0x0000, 0xC003,0xE7E7, 0x3FFC, 0x0FF0, 0x0DB0,
+	0x07E0, 0x0660, 0x37EC, 0xE427,0xC3C3, 0x0000, 0x0000, 0x0000,  
+};
+char *cmdlist[]={
+	"style",
+	    "texture",
+	    "brush",
+	    "buttons",
+	    "copy",
+	    "unix",
+	    "clear all",
+	    0
+};
+char *stylelist[]={
+	"ink\0",
+	    "point\0",
+	    "line\0",
+	    "finepoint\0",
+	    "disc\0",
+	    0
+};
+char *copylist[]={
+	"copy\0",
+	    "rotate\0",
+	    0
+};
+char *unixlist[]={
+	"read\0",
+	    "write\0",
+	    "exit\0",
+	    0
+};
+char *brushlist[1+NBRSH+1]={
+	"<new>\0",
+	    "point\0",
+	    "smallbox\0",
+	    "medbox\0",
+	    "bigbox\0",
+	    0
+};
+char *txtlist[1+NTXT+1]={
+	"<new>\0",
+	    "black\0",
+	    "grey\0",
+	    "checks\0",
+	    "stipple\0",
+	    0
+};
+char *codelist[]={
+	"store",
+	    "or",
+	    "and-not",
+	    "xor",
+	    "move",
+	    0
+};
+char *butlist[]={
+	"or-clear\0",
+	    "or-xor\0",
+	    "store-clear\0",
+	    "store-xor\0",
+	    0
+};
+/* I apologize for the numbers here */
+Code codes[4][2]={
+	1,	2,	/* OR	CLR */
+	1,	3,	/* OR	XOR */
+	0,	2,	/* STORE CLR */
+	0,	3,	/* STORE XOR */
+};

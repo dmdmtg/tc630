@@ -1,0 +1,145 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\"
+.if \nZ \{\
+.TH XDMDDEMO 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH DMDDEMO 1 TOOLCHEST\}
+.SH NAME
+dmddemo - demonstrations programs for AT&T Dot-Mapped Display terminals.
+.SH SYNOPSIS
+\fBdmddemo\fR [\fB-V\fP] [demos]
+.SH DESCRIPTION
+The \fIdmddemos\fR are graphical demonstration programs for AT&T Dot-Mapped Display
+Terminals (5620 DMD and 630 MTG).
+Typing \fIdmddemo\fR with no arguments lists the available demonstrations.
+Exiting each program can be done by typing 'q' when that window is current
+or by deleting the window.
+Many of these programs become local windows unless they are downloaded into a window
+which is the last window connected to a host. Those that do are marked with
+a dagger (\(dg) in the list below.
+.P
+The \fB-V\fP option causes \fIdmddemo\fP to print a message that
+identifies which version it is.
+.sp 2
+Available demonstrations are:
+.TP 10
+\fBa\fR
+A graphical demonstration that continuously displays patterns of
+squares.\(dg
+.TP 10
+\fBb\fR
+A graphical demonstration that displays ricocheting squares.\(dg
+.TP 10
+\fBbltdemo\fR
+A graphical demonstration that displays a moving square
+three-dimensionally.  This demo exits when it is finished.
+.TP 10
+\fBcalc\fR
+A RPN calculator for hexadecimal, decimal, or octal.  Use button 2 of
+the mouse to select the radix.\(dg
+.TP 10
+\fBclock1\fR
+An analog clock with hour, minute, and second hands.\(dg
+.TP 10
+\fBclock2\fR
+An alarm clock with a date feature.  Button 1 is used to set the alarm
+and/or date.
+.TP 10
+\fBdisc\fR
+A graphical demonstration that displays something like a cymbal.
+.TP 10
+\fBelevator\fR
+A 3-D demonstration of moving squares that is similar to \fBbltdemo\fR.  This demo exits when it is finished.
+.TP 10
+\fBjuggle\fR
+A demonstration of juggling balls.\(dg
+.RS
+.TP
++ [-]
+adds [deletes] balls
+.TP
+h [l]
+increases [decreases] arc
+.TP
+i or j
+inverts video
+.TP
+f [s]
+goes faster [slower]
+.TP
+w [n]
+widens [narrows] the gap between the "hands"
+.TP
+a [d]
+accelerates [decelerates] balls leaving the "hands"
+.TP
+1-9
+changes the smoothness of the balls' motion.
+.RE
+.TP 10
+\fBlife\fR
+The Game.
+.TP 10
+\fBm\fR
+A psychedelic art generator.  Use the space bar to reset the demonstration.\(dg
+.TP 10
+\fBmaxwell\fR
+A graphical representation of Maxwell's distribution of molecular energy
+principle.  Button 2 of the mouse opens a door, allowing molecules to
+exchange sides.  Type 'r' to restart.\(dg
+.TP 10
+\fBmoire\fR
+Another "bounce" derivative, using a triangle.\(dg
+.TP 10
+\fBmunch\fR
+A cyclic art generator.\(dg
+.TP 10
+\fBnball\fR
+Another ball bounce - this time with an orange ball in an orange room.\(dg
+.TP 10
+\fBone\fR
+A variant of \fBmunch\fR.\(dg
+.TP 10
+\fBrae\fR
+A graphical demonstration of balls falling into a box until the box is filled.\(dg
+.TP 10
+\fBscope\fR
+A fascinating scheduling oscilloscope.\(dg
+.TP 10
+\fBsmiley\fR
+A cynical game with your favorite character.
+Use the space bar to start the game and to shoot;
+use the arrow keys to move.\(dg
+.TP 10
+\fBspheres\fR
+A pop art generator.
+.TP 10
+\fBweird\fR
+Another ball bouncer.\(dg
+.TP 10
+\fBworm\fR
+An interactive game where you help the snake catch the frog.\(dg
+.TP 10
+\fBwin\fR
+A practice session for sweeping boxes.  Use button 3 to sweep out a box.
+.if \nZ \{\
+.SH FILES
+.ta 4i
+$TOOLS/lib/dmdtools/xdmddemo	host support for \fIxdmddemo\fP
+.br
+$TOOLS/lib/xdmddemo/630/*	terminal support for the 630 MTG
+.br
+$TOOLS/lib/xdmddemo/dmd/demolib/*	terminal support for the 5620 DMD
+.br
+$TOOLS/lib/xdmddemo/dmd/demolibsa/*	stand-alone terminal support for the 5620 DMD
+.br
+$TOOLS/lib/xdmddemo/demobin/*	host support for the demonstrations
+.br
+\}
+.DT

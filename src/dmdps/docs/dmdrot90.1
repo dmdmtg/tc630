@@ -1,0 +1,39 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.TH DMDROT90 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdrot90 \- bitmap rotation filter
+.SH SYNOPSIS
+.I dmdrot90 
+[ infile [ outfile ] ]
+.SH DESCRIPTION
+.PP
+.I Dmdrot90
+rotates bitmaps 90 degrees.
+.I Dmdrot90
+accepts as input bitmaps created with
+.I dmdps
+and
+.I brush.
+.I Dmdrot90
+outputs bitmaps in the same format.
+.sp
+.SH "EXAMPLES"
+dmdrot90 < BLITMAP > sideways
+.sp
+The above command rotates BLITMAP and places result in sideways.
+.sp
+dmdrot90 < BLITMAP | dmdrot90 > upsidedown
+.sp
+upsidedown gets an upside down version of the bitmap.
+.sp
+.SH "SEE ALSO"
+.IR "layers(1), dmdfmt(1), dmdscale(1), dmdps(1), dmdpr(1), brush(1)."

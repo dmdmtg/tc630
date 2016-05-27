@@ -1,0 +1,183 @@
+.\"       Copyright (c) 1987 AT&T   
+.\"       All Rights Reserved       
+.\"
+.\"       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+.\"       The copyright notice above does not evidence any     
+.\"       actual or intended publication of such source code.  
+.\"
+.\" @(#)xproof.1	1.1.1.13 90/06/21 13:31:51
+.\"
+.ds ZZ TEXT AND GRAPHICS PACKAGE
+.if \nZ \{\
+.TH XPROOF 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH PROOF 1 TOOLCHEST\}
+.SH NAME
+proof \- troff output simulator
+.SH SYNOPSIS
+\fBproof\fP [ \fB-s\fR | \fB-w\fR ] [ \fB-l\fR ] [ \fB-p\fP \fIpage\fP ] [ \fB-V\fP ] [ \fB-L\fP ] [ file ]
+.SH DESCRIPTION
+The \fIproof\fP utility is a troff output simulator for AT&T Dot-Mapped Display
+terminals (5620 DMD and 630 MTG).  It reads \fItroff\fR output from \fIfile\fP
+(standard input default)
+and displays a simulation of the resulting pages on the screen.
+The amount of text displayed depends on the mode,
+which can be set from the command line:
+.TP
+.B -s
+.I scaled
+mode displays an entire page of text.  To do so, it will use
+appropriately smaller fonts than called for by \fItroff\fP.
+This may result in illegible script,
+but is possibly useful for getting a general impression of the layout of
+a page.  It is the default mode.
+.TP
+.B -w
+.I window
+mode displays as much correctly sized text as the layer can hold.
+.P
+By default, \fIproof\fP sizes the frame for displayed text with proportions
+for an 8.5x11 inch page with portrait orientation.
+The \fB-l\fP option causes \fIproof\fP to size the frame for the same sized
+page with landscape orientation (must set pagelength before \fIproof\fP is 
+invoke).
+.P
+The \fB-p\fP option causes \fIproof\fP to begin at the specified
+\fIpage\fP.
+The \fB-V\fP option causes \fIproof\fP to print a message that
+identifies which version it is.
+The \fB-L\fP option invokes ligature simulation for the \fIff\fP,
+\fIfi\fP, and \fIfl\fP ligatures.
+.PP
+The \fB-c\fP option, available only for the 630 MTG, results in the \fIproof\fP
+program being kept \fI(cached)\fP in the terminal's RAM memory after quitting
+\fIproof\fP.  The next invocation of \fIproof\fP will bring up the
+program quickly without having to download it.  Use the 630 MTG \fIucache(1)\fP
+program to remove \fIproof\fP from the terminal's cache.
+.if !\nZ \{\
+(Note: It is a fatal error to specify the \fB-c\fP option on a 5620 DMD.)\}
+.PP
+Fonts are loaded as required.  If the requested font is not available,
+the default font is used and the name of the missing
+font is noted in the file
+.BR /tmp/.missing .
+.P
+\fIProof\fP supports the concept of a "directory search path"
+for finding fonts.  If the environment variable \fBFONT\fP contains
+one or more alternate directory paths (separated by colons),
+these will be searched for requested
+fonts before the default font directory, $DMD/font.  In addition, if 
+the environment variable \fBTOOLS\fP is set, $TOOLS/lib/xfont will be 
+appended to \fBFONT\fP. It may be useful to set the this environment 
+variable in the system-wide .profile file. 
+\fIProof\fP must have access to the \fBdefont\fP
+default font.  A return code of 5 indicates that this file could not be
+found.
+.if !\nZ \{\
+.P
+When using \fIproof\fP on a 5620 DMD, after a document has been
+displayed, \fIproof\fP will enter the so-called \fIproofterm\fP mode.
+This is a simple terminal emulator that enables host commands and
+pipelines to be built and executed for subsequent proofing.
+The fonts loaded by \fIproof\fP remain available until the user
+explicitly exits the program.\}
+.P
+The 630 MTG version of \fIproof\fP differs from the 5620 version in that
+the 630 MTG version supports the application caching feature of the
+newer terminal.
+After a document has been displayed, \fIproof\fP exits,
+but since it will normally remain in the terminal cache, and the fonts
+in the terminal's font cache, subsequent start-up is almost instantaneous.
+\fIProofterm\fP is (by default) not supported on 630 MTG terminals.
+.P
+After a layer's worth of text is displayed,
+.I proof
+pauses for a command.
+Commands may be entered from either the host or the keyboard
+or be selected from the button 3 menu.
+The following are recognized:
+.TP
+\fBcarriage return\fP
+displays the next windowful of data, which
+is possibly the start of the following page.
+.TP
+\fBq\fP
+.if !\nZ \{\
+enters \fIproofterm\fR mode on the 5620 DMD; \}
+exits \fIproof\fP and restarts 
+the regular terminal program on the 630 MTG.
+.TP
+\fBx\fP
+exits \fIproof\fP and restarts the regular terminal program.
+.TP
+\fBp\fI n\fR
+sets the next page to be proofed to \fIn\fR.
+.TP
+\fBs\fP
+sets scaled mode.
+.TP
+\fBw\fP
+sets window mode.
+.P
+The page number should be a number or \fB$\fP (indicating the last page).
+Missing numbers go to page 1.
+Out of range page numbers are handled differently depending on
+whether input is taken from a file or a pipe.  In the former case,
+the next windowful of data is displayed.  In the later, proof
+exits.  Since piped input cannot be backed up, when input is taken
+from a pipe, page numbers less than or equal to the current page
+cause the next windowful of data to be displayed instead of the
+requested page.  Page numbers less than or equal to the current page
+do cause the requested page to be displayed when input is taken from
+a file, however. 
+.P
+.I proof
+interprets lines, splines, circles, ellipses, and arcs directly
+and without regard to the prevailing point size.
+.if \nZ \{\
+.SH FILES
+.ta \w'$TOOLS/lib/630/xproof.m  'u
+$TOOLS/lib/dmdtools/xproof	host support for \fIxproof\fP
+.br
+$TOOLS/lib/630/xproof.m	terminal support for the 630 MTG
+.br
+$TOOLS/lib/dmd/xproof.m	terminal support for the 5620 DMD
+.br
+$TOOLS/lib/xfont/*		fonts
+.br
+/tmp/.missing	list of referenced but unavailable fonts\}
+.DT
+.SH EXAMPLE
+To display manual pages in typeset format, use the following:
+.sp .5
+.ce
+(tbl manpage.1 | eqn | troff -man -T300 | proof -wc) 2> proof.stderr
+.sp .5
+Note that error messages originating from \fItroff\fP, or other
+programs earlier in the pipeline, can confuse the protocol that \fIproof\fP
+uses, possibly resulting in the crash of the terminal.  It is good
+practice to ensure that the standard error output is always redirected
+somewhere inoffensive.
+.SH SEE ALSO
+troff(1) in the
+\f2\s-1UNIX\s+1 System V \s-1DOCUMENTER'S WORKBENCH\s+1
+Introduction and Reference Manual\f1.
+.br
+\f2\s-1UNIX\s+1 System V \s-1DOCUMENTER'S WORKBENCH\s+1
+Text Formatters Reference\f1.
+.br
+ucache(1) in the \fI630 MTG Software Reference Manual.
+.SH BUGS
+If a non-existant page number is specified, \fIproof\fR will simply
+display the next windowful of data.
+.\" unless it's in Fast Start mode, in which case, \fIproof\fP
+.\" will return to the user's shell.
+.PP
+There is a maximum number of fonts (currently 50) that can be loaded
+at once.  Since each (size,typeface) tuple and each special character
+is a font, this limit can be exceeded in printing highly theoretical
+papers.
+.P
+Characters are usually positioned by words, not individually.  Character
+sets that differ from \fItroff's\fR idea of their width will
+result in somewhat ragged copy.

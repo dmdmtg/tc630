@@ -1,0 +1,21 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+# @(#)README	1.2   (7/28/92)
+
+PROGRAM: 32ld
+
+DESCRIPTION: 5620 program downloader
+
+
+Note: "lsys.8;7;3" in this directory is the download image for 5620 1.1
+    ROMS.  The makefiles do not install it anywhere, but you can copy
+    it into $DMD/lib/layersys if you want to use it to download.
+    Likewise for "set_enc.j"; it is a small pre-download patch for
+    5620 1.1 ROMS.  If you have a little-endian machine such as a vax
+    or intel '386, you will need to convert them with 'm32conv -t vax' or
+    'mc68conv -t vax'.

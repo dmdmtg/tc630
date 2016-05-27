@@ -1,0 +1,76 @@
+.ds ZZ CORE PACKAGE
+.TH 32LD 1
+.SH NAME
+32ld \- bootstrap loader for 5620
+.SH SYNOPSIS
+.B 32ld
+[
+.B \-d
+] [
+.B \-r
+] [
+.B \-p
+] [
+.B \-z
+] file
+.SH DESCRIPTION
+The
+.I 32ld
+utility
+loads the named
+.I file
+for execution in the 5620 connected to its standard output.
+.I File
+must be a 5620 object file.
+.I 32ld
+does all necessary bootstrap and protocol procedures.
+There are several options.
+.TP
+.B \-d
+causes a printout of the sizes of the text, data, and bss
+portions of
+.I file
+on the diagnostic output.
+.TP
+.B \-p
+prints down-loading protocol statistics on the diagnostic output.
+.TP
+.B \-r
+causes
+.I file
+to be relocated to an address established by a separate
+protocol during bootstrap.
+It is invoked automatically when loading a process into
+.IR layers (1),
+and usually need not be set explicitly.
+.TP
+.B \-z
+loads the process but does not run it.
+It must be started using
+.IR dmdebug (1).
+It works only under
+.IR layers (1).
+.PP
+The environment variable
+.B JPATH
+is the analog of the shell's
+.B PATH
+variable to define a set of directories in which to search for
+.IR file .
+.TP
+\s-1\f3NOTE\s+1\f1:
+Standard error should be redirected when using the
+.B \-d
+or
+.B \-p
+options.
+.SH EXAMPLE
+Loading bounce into
+\fIlayers\fR:
+.br
+.ti +4
+.ft CM
+32ld bounce
+.ft R
+.SH SEE ALSO
+dmdebug(1), jx(1), layers(1).

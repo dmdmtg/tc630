@@ -1,0 +1,8 @@
+.nf
+.PS
+scale=100
+box invis ht 832 wid 760 with .sw at 0,0
+box ht 832 wid 760 with .nw at 0,832 
+"\fR\s24\&BOX THAT FILLS XCIP SCREEN\fP\s0" at 400,442
+.PE
+.fi

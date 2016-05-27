@@ -1,0 +1,46 @@
+.nf
+.PS
+scale=100
+define t104 |
+[ box invis ht 48 wid 90 with .sw at 0,0
+"\fR\s10\&AFSC\fP\s0" at 45,38
+"\fR\s10\&ENTERS\fP\s0" at 45,22
+"\fR\s10\&CTR TICKET\fP\s0" at 45,6
+] |
+
+define m1 |
+[ box invis ht 48 wid 48 with .sw at 0,0
+circle rad 24 at 24,24
+] |
+
+define m0 |
+[ box invis ht 64 wid 128 with .sw at 0,0
+box ht 64 wid 128 with .nw at 0,64 
+] |
+
+define m2 |
+[ box invis ht 62 wid 128 with .sw at 0,0
+box ht 62 wid 128 with .nw at 0,62 
+] |
+
+box invis ht 564 wid 128 with .sw at 0,0
+"\fH\s12\&2A\fP\s0" at 64,536
+circle rad 32 at 64,222
+"\fR\s10\&CTR\fP\s0" at 68,216
+m1 with .nw at 40,564
+m1 with .nw at 40,48
+m0 with .nw at 0,460
+m0 with .nw at 0,350
+m2 with .nw at 0,150
+"\fH\s12\&2Z\fP\s0" at 64,20
+"\fR\s10\&CWC\fP\s0" at 60,114
+t104 with .nw at 15,342
+"\fR\s10\&AFSC\fP\s0" at 64,426
+line -> from 64,396 to 64,350 
+line -> from 64,286 to 64,254 
+line -> from 64,190 to 64,150 
+line -> from 64,88 to 64,48 
+"\fR\s10\&Referral\fP\s0" at 96,498
+line -> from 64,516 to 64,460 
+.PE
+.fi

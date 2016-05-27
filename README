@@ -1,0 +1,163 @@
+Contents of the package:
+------------------------
+
+             630_pkg - 5620 DMD and 630/730 MTG Package
+
+<> The 630 MTG Toolchest package contains 18 popular application
+   programs for AT&T Dot-Mapped Display terminals (630/730 MTG and
+   5620 DMD).  The source code for these programs compile for both
+   the 630/730 MTG and the 5620 DMD, with the exception of: xdmdps,
+   xucache, xzap630 and x630cart which are for the 630/730 MTG only.
+   The code will compile on the 3B20, 3B2, 6386WGS, VAX, and AMDAHL.
+   Most of the code will also compile on Suns; all except xdmdlock
+   and xsysmon.
+
+<> Included in the package are text processing tools, terminal
+   emulators, application downloaders and graphical demonstration
+   programs.  In addition, the fonts for xcip and xproof are also
+   part of the package.
+
+The following list briefly describes each program in the package:
+
+xcip: A graphics drawing program with output in pic format.
+
+32ld: The 5620 DMD application downloader.  This package includes
+          32reloc and 32version and the lsys.8;7;3 download binary
+          for downloading the 5620 2.0 firmware features into 1.1
+          firmware.
+
+xdmddemo: A set of graphical demonstration programs that range from
+          simple demonstrations to interactive games.
+
+xdmdld: The 630/730 MTG application downloader.
+
+xhp2621: A terminal emulator which allows the user to run
+          programs that normally converse with HP2621 terminals.
+
+xjx: The standard I/O interpreter for the 5620 DMD and the 630/730
+          MTG.
+
+xlens: An interactive magnification program for the 5620 DMD and
+          the 630/730 MTG that allows the user to magnify any portion of
+          the screen.
+
+xproof: A troff output simulator for the 5620 DMD and the 630/730 MTG
+          that reads troff output from a file or pipe and displays a
+          simulation of the resulting images on the screen.
+
+xsysmon: An application that monitors UNIX system activity of the
+          user's host computer.
+
+xtdmd: A graphics filter for the 5620 DMD and the 630/730 MTG that is
+          equivalent to members of the set of plot filters described
+          in tplot(1).
+
+xtek4014: An emulator of the Tektronix 4014 computer display
+          terminal for the 5620 DMD and the 630/730 MTG.
+
+xtwid: A drawing program that allows the user to draw and paint
+          pictures with the mouse.
+
+xdmdlock: A terminal security aid.  Xdmdlock locks a 5620 DMD or
+          630/730 MTG terminal running layers so that no window can be
+          accessed without the chosen passwd.  Because it utilizes
+          the UNIX encryption source program, xdmdlock requires a
+          UNIX System V source license.
+
+xjf: A font editor for creating or modifying fonts for use with the
+          5620 DMD or 630/730 MTG.
+
+The user has the option of compiling the source code for either the
+5620 DMD, the 630/730 MTG or both.  In most cases, the 630 MTG Software
+Development Package must be installed in order to compile the
+source code for the 630/730 MTG, and the 5620 DMD Application Development
+Package must be installed in order to compile source code for the
+5620 DMD.
+
+The following applications are for the 630 MTG only:
+
+xdmdps: A graphics utility for capturing and producing bitmaps.
+          Xdmdps can be used to print bitmaps on the 630 MTG
+          auxiliary port.
+
+xucache: The 630 application cache maintenance program.  It allows
+          users to list the contents of the cache, or delete
+          programs stored there.
+
+xzap630: A program for use with mc68conv for byte-order conversion
+          of terminal object modules for non-AT&T computers.
+
+x630cart: A software program for use with the 630, so that
+          programmers can create their own custom cartridges for
+          the 630 MTG.
+
+Building the Code:
+__________________
+
+
+To build the entire 630 MTG Toolchest Source Code, execute the command:
+
+  cd src
+  make DMD630=<630 SDP> DMD5620=<5620 ADP>
+
+where <630 SDP> is the full path name to the 630 MTG Software Development
+Package and <5620 ADP> is the full path name to the 5620 DMD Application
+Development Package.  The 630 MTG Software Development Package must be
+installed in order to compile the entire 630 MTG Toolchest for the 630 MTG.
+
+To build only for 630:
+
+  make DMD630=<630 SDP> TCTERM=630
+
+To build only for 5620:
+
+  make DMD5620=<5620 ADP> TCTERM=dmd
+
+
+Each application can also be built individually.  The source code for 
+each application resides under the "src" directory in a directory with 
+the same name as the application.  Each of these directories has a README 
+file which contains information for compiling the individual application.  
+Unless the README file for the specific application states otherwise, the 
+630 MTG Software Development Package must be installed to compile the 
+source for the 630 MTG.
+
+
+Installing the Code:
+____________________
+
+Choose a directory where you want the binaries to go.  Copy everything from
+the bin, lib, and man directories under there.
+
+
+
+Using the package:
+__________________
+
+
+To use the Toolchest package, one must: 
+
+	-set TC630 to equal the path of the installed Toolchest package
+	-add $TC630/bin to one's path.
+
+
+Cleaning up:
+____________
+
+
+When the build is complete, the source directories can be cleaned up
+with the command:
+
+	make clobber
+
+This will remove all the files generated by the install action.
+
+
+Copying
+-------
+
+This source code is copyrighted by AT&T but is distributable under the
+terms of the GNU General Public License.  See the 'COPYING' file for
+details.
+
+- Dave Dykstra, 3/25/94

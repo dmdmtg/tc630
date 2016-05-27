@@ -1,0 +1,112 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+### Standard Defines ###
+
+########
+#
+# Macro definitions
+#
+#	MODEBIN is used by descendent makefiles to set the file mode
+#	for executable products.
+#
+#	MODELIB is used by descendent makefiles to set the file mode
+#	for non-executable products.
+#
+#	DMD630 is $DMD for 630 applications
+#	DMD5620 is $DMD for 5620 applications
+#	   - these must be set on the command line for toolchest builds
+#
+#	DMDSYS is the directory for layers include files and libraries
+#
+#	DEFDMD is the default $DMD if $DMD is not set (if any)
+#
+#	TCTERM is terminal to build for: 630 or dmd, or all for both
+#
+#	EXTRACFLAGS is extra CFLAGS to be passed to all Unix program 
+#	    compile and link commands, that is, $(CC)
+#
+#
+########
+MODEBIN=775
+MODELIB=664
+DMD630=unknown
+DMD5620=unknown
+DMDSYS=$(DMD)
+DEFDMD=
+TCTERM=all
+EXTRACFLAGS=-O
+# CFLAGS is often overridden in individual makefiles; when it is, 
+#   $(EXTRACFLAGS) should be part of the overriding.
+# makefiles that link host programs should always include $(CFLAGS) at
+#   the END of the link command in case EXTRACFLAGS includes -l libraries.
+CFLAGS=$(EXTRACFLAGS)
+
+# -rZ0 is for TOOLCHEST man pages and -rZ1 is for EXPTOOLS man pages
+MANFL=-rZ0
+
+# -DMD630 is defined by dmdcc for 630
+MCFLAGS630=-O
+MCFLAGS5620=-O -DDMD5620
+MCC=$(DMD)/bin/dmdcc
+MDIS630=bin/mc68dis
+MDIS5620=bin/m32dis
+MAR630=bin/mc68ar
+MAR5620=bin/m32ar
+MSTRIP630=bin/mc68strip
+MSTRIP5620=bin/m32strip
+MLORDER630=bin/mc68lorder
+MLORDER5620=bin/m32lorder
+
+TCLIB=$(TC630)/lib
+TCBIN=$(TC630)/bin
+TCSRC=$(TC630)/src
+TCMAN=$(TC630)/man
+
+# possible locations for hostagent library
+LIBWINPATHS= $(DMDSYS)/lib/libwindows.a $(DMDSYS)/lib/hostagent.o
+
+# default clean and clobber values
+CLEANHOST=$(OBJSHOST)
+CLEAN5620=$(OBJS5620)
+CLEAN630=$(OBJS630)
+CLOBBERHOST=$(PRODUCTSHOST)
+CLOBBER5620=$(PRODUCTS5620)
+CLOBBER630=$(PRODUCTS630)
+
+########
+#
+# In order for the macro definitions specified on the
+# command line to be passed to decendent makefiles
+# they must be included in the following generic macro definition.
+#
+# You can set EXTRAMACROS to pass extra macros definitions along,
+# for example:
+#	EXTRAMACROS='TC630=$(TC630)'
+# will override the default path names for the install directory
+# (the default TC630 is relative path names pointing to one level
+# above this so they're different in each makefile; that's why TC630
+# is not normally part of MACROS).
+# 
+#
+########
+MACROS=MODEBIN=$(MODEBIN) MODELIB=$(MODELIB) TCTERM=$(TCTERM) \
+	DMD630=$(DMD630) DMD5620=$(DMD5620) DMDSYS=$(DMDSYS) DEFDMD=$(DEFDMD) \
+	MANFL=$(MANFL) EXTRACFLAGS="$(EXTRACFLAGS)" $(EXTRAMACROS)
+
+# Need to specify TCTERM before and after $(MACROS) because some 'make's
+#  take precedence left to right and some take right to left
+MACROS5620=TCTERM=dmd $(MACROS) TCTERM=dmd MCFLAGS="$(MCFLAGS5620)" \
+	DMD=$(DMD5620) MAR=$(DMD5620)/$(MAR5620) MDIS=$(DMD5620)/$(MDIS5620) \
+	MSTRIP=$(DMD5620)/$(MSTRIP5620) MLORDER=$(DMD5620)/$(MLORDER5620)
+
+MACROS630=TCTERM=630 $(MACROS) TCTERM=630 MCFLAGS="$(MCFLAGS630)" \
+	DMD=$(DMD630) MAR=$(DMD630)/$(MAR630) MDIS=$(DMD630)/$(MDIS630) \
+	MSTRIP=$(DMD630)/$(MSTRIP630) MLORDER=$(DMD630)/$(MLORDER630)
+
+### Specific Defines ###
+

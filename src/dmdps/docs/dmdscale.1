@@ -1,0 +1,44 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.TH DMDSCALE 1 "EXPTOOLS - DMD"
+.SH NAME
+dmdscale \- bitmap scaler
+.SH SYNOPSIS
+.I dmdscale 
+[-h height_multiplier ]
+[-w width_multiplier ]
+[ infile [ outfile ] ]
+.SH DESCRIPTION
+.PP
+.I Dmdscale
+scales bitmap images by the amounts indicated on the command
+line. Only positive integers are allowed as scaling factors.
+.I Dmdscale
+accepts as input an encoded file which was created with
+.I dmdps
+or
+.I brush(1).  
+.I Dmdscale 
+produces the same encoded file format for output that it accepts
+for input, but leaves the raster lines expanded - it
+does not run-encode them. This tool will produce very large amounts
+of output, so use it with care.
+.SH "EXAMPLES"
+dmdscale -h 3 -w 3 BLITMAP | dmdfmt -T i300 | i300 -l impress -d ihXXX
+.sp
+The above command will scale the image to 300dpi (from the 100dpi
+original), format it, and output it on the imagen printer
+at rje destination ihXXX. 
+Watch out, a full screen 5620 DMD bitmap image is 900 Kbytes.
+This takes time to transmit over slow links; expect at least 15 minutes 
+to send an expanded full-screen image at 9600 bps.
+.SH "SEE ALSO"
+.IR "layers(1), dmdfmt(1), dmdrot90, dmdps(1), dmdpr(1)."

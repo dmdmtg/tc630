@@ -1,0 +1,40 @@
+#       Copyright (c) 1987 AT&T   
+#       All Rights Reserved       
+
+#       THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T   
+#       The copyright notice above does not evidence any     
+#       actual or intended publication of such source code.  
+
+# @(#)README	1.1.1.2   (11/6/87)
+
+PROGRAM: xdmdld
+
+DESCRIPTION: 630 program downloader
+
+COMPUTER: 3B2
+	  3B20
+	  VAX
+	  AMDAHL
+
+OPERATING SYSTEM: UNIX System V Release 2 or 3 
+
+BUILD PROCEDURE: make TC630=<install dir> <action>
+
+		where:
+
+		 <install dir> - where the products will be installed
+
+		 <action> - defines the action to be done. Possible actions
+			    are: build - just make the products
+				 install - install the products
+				 clean - remove .o's
+				 clobber - remove the products under the source
+					   directory
+			    The default action is build.
+
+		 requirements: the following directories must already exist
+			       to do the install action:
+				$TC630/bin
+				$TC630/man
+
+

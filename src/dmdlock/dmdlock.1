@@ -1,0 +1,149 @@
+.\" 
+.\"									
+.\"	Copyright (c) 1987,1988,1989,1990,1991,1992   AT&T		
+.\"			All Rights Reserved				
+.\"									
+.\"	  THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T.		
+.\"	    The copyright notice above does not evidence any		
+.\"	   actual or intended publication of such source code.		
+.\"									
+.\" 
+.if \nZ \{\
+.TH XDMDLOCK 1 EXPTOOLS\}
+.if !\nZ \{\
+.TH DDMDLOCK 1 TOOLCHEST\}
+.SH NAME
+dmdlock \- lock a terminal running layers
+.SH SYNOPSIS
+\f3dmdlock\f1 [\f3 \-p\f1 ]
+.br 
+\f3dmdlock\f1 [ [ \f3\-A\f1 | \f3\-a\f1 ] \f2timeout\f1 ] [ \f3\-b\f1 ] [ \f3\-c\f1 ] [ \f3\-L\f1 | \f3\-l\f1 ] [ \f3\-u\f1 ] [ \f2password\f1
+.SH DESCRIPTION
+.I dmdlock
+allows you to lock a terminal running layers
+so that the terminal can be left unattended
+but logged on.  To unlock the terminal, you must
+correctly enter a password.
+A menu on button 3 allows you to choose between a host password
+or a newly typed password, and to choose between mouse- or
+keyboard-based triggering.  
+.sp
+If no password is specified by the parameter list, 
+.I dmdlock 
+will
+prompt for one after it has downloaded.
+The password will not be displayed as it is typed;
+however, a backspace will delete a character and an at-sign (@)
+will kill the entire line.
+You will be asked to verify the password by re-typing it. 
+.PP
+Passwords used with the \f2dmdlock\f1(1) command must conform to
+UNIX\*R System V Release 4 (SVR4)
+standards, which are presented here:
+.IP "\f3\(bu\f1" 0.25i
+Password length must be greater than or equal to six characters.
+.IP "\f3\(bu\f1" 0.25i
+No circular shift of the login name is allowed.
+.IP "\f3\(bu\f1" 0.25i
+At least two alphabetic characters must be used.
+.IP "\f3\(bu\f1" 0.25i
+At least one numeric or special character must be used.
+.if \nI==0 \{\
+.PP
+Because \f2dmdlock\f1 uses the Security Administration Utilities,
+it is available only in the United States.
+\}
+.SH OPTIONS
+The following options are supported by \fIdmdlock\fR:
+.TP
+.B \-a
+Specify the autolock timeout period in minutes.
+\f2dmdlock\f1 locks the terminal automatically whenever the terminal
+remains inactive for a period of time exceeding the timeout period.
+The default and maximum timeout period
+is 15 minutes (900 seconds).  
+Specifying a timeout period of 0 disables automatic locking.
+The keyboard will sound a tone when the countdown is in its last minute.
+.TP
+.B \-b
+Blank out the screen upon locking.
+(The screen
+restores when the terminal is unlocked.)
+.TP
+.B \-c
+cache the \f2dmdlock\f1 in memory
+so that the layer can be deleted and accessed
+later using the button 3 ``other'' menu.
+.TP
+.B \-l
+select the mouse-based trigger as
+the locking/unlocking mechanism.
+(The default is keyboard-based locking.)
+Mouse-based triggering works by locking the 
+terminal whenever the 
+.I dmdlock 
+layer is selected. 
+Keyboard-based triggering locks the terminal whenever the 
+.I dmdlock 
+layer is current and the \f2RETURN\f1 key is pressed.
+.TP
+.B \-p
+create a private password
+file (\f2$HOME/.dmd.lock\f1) to hold
+an encrypted login password, and exit.
+.TP
+.B \-u
+Use the host password
+(found in \f2$HOME/.dmd.lock\f1)
+as the locking key.
+This overrides the default action of prompting for a newly typed password.
+If \f2$HOME/.dmd.lock\f1 doesn't exist, 
+.I dmdlock 
+will fail with an error message, and will suggest
+running
+.I dmdlock 
+with the 
+.B \-p 
+option first.
+.TP
+.B \-A
+Same as the \f3\-a\f1 option, except that
+the countdown is suppressed until the last minute:
+see \f3\-a\f1 option.
+.TP
+.B \-L 
+Select mouse-based triggering
+and lock the terminal immediately upon downloading into
+the current layer, or (later) by selecting
+the appropriate option from
+the button 3 ``other'' menu.
+(See the \f3\-l\f1 and \f3\-c\f1 options.)
+.SH WARNING
+.I dmdlock
+only runs under layers.
+The 
+.B \-p
+option will invoke the C compiler, and hence will
+only run on machines that have the \f2cc\f1(1) command installed.
+It is unsafe to provide the password via the command line;
+command line arguments can be viewed by other users
+using the \f2ps\f1(1) command.
+.SH CAVEAT
+When running \f2dmdlock\f1 on
+a 630 MTG terminal with 8;8;6 ROM, you
+cannot change command-line arguments.
+Instead,
+you must ``un-cache'' the whole
+\f2dmdlock\f1 application first, then re-load it
+with the desired options/arguments.
+See \f2ucache\f1(1).
+.SH BUGS
+.I dmdlock
+doesn't know about your \f2stty\f1(1) erase/kill characters.
+.SH FILES
+.nf
+/etc/passwd		the system-wide password file
+$HOME/.dmd.lock		a private password file
+.fi
+.SH "SEE ALSO"
+layers(1), stty(1), crypt(3), ps(1), ucache(1)
