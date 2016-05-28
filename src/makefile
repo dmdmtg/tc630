@@ -47,9 +47,7 @@ TOOLPRODUCTS = \
 	ucache \
 	xcip \
 	630cart \
-	zap630 \
-	dmdlock \
-	sysmon
+	zap630
 
 #######
 # Default pieces to build for a remote exptools make
