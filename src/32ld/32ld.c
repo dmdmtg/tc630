@@ -177,6 +177,19 @@ extern char *getenv();
 #define JPATH_ACCESS 1
 #define JPATH_OPEN 2
 
+#ifdef ultrix
+char *
+strdup(s)
+     char *s;
+{
+    char *result = (char*)malloc(strlen(s) + 1);
+    if (result == (char*)0)
+	return (char*)0;
+    strcpy(result, s);
+    return result;
+}
+#endif
+
 timeout_id()
 {
 	error(0, "Error: Invalid terminal type:\n\t not a DMD terminal or DMD failed to respond",
