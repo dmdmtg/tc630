@@ -12,7 +12,7 @@ include ../../stand.defs
 TC630=../../..
 TOOLNAME=dmddemo/lg_demo
 SUBDIRSHOST=life
-SUBDIRS5620=$(SUBDIRSHOST) smiley worm calc
+SUBDIRS5620=$(SUBDIRSHOST) smiley calc
 SUBDIRS630=$(SUBDIRS5620)
 SOURCE=
 
