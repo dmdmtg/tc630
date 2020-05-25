@@ -9,12 +9,18 @@
 /*
  */
 
+#if __STDC__
+#include <stdint.h>
+#else
+typedef long int32_t;
+#endif
+
 struct filehdr {
 	unsigned short	f_magic;	/* magic number */
 	unsigned short	f_nscns;	/* number of sections */
-	long		f_timdat;	/* time & date stamp */
-	long		f_symptr;	/* file pointer to symtab */
-	long		f_nsyms;	/* number of symtab entries */
+	int32_t		f_timdat;	/* time & date stamp */
+	int32_t		f_symptr;	/* file pointer to symtab */
+	int32_t		f_nsyms;	/* number of symtab entries */
 	unsigned short	f_opthdr;	/* sizeof(optional hdr) */
 	unsigned short	f_flags;	/* flags */
 	};

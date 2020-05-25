@@ -9,17 +9,23 @@
 /*
  */
 
+#if __STDC__
+#include <stdint.h>
+#else
+typedef long int32_t;
+#endif
+
 struct scnhdr {
 	char		s_name[8];	/* section name */
-	long		s_paddr;	/* physical address, aliased s_nlib */
-	long		s_vaddr;	/* virtual address */
-	long		s_size;		/* section size */
-	long		s_scnptr;	/* file ptr to raw data for section */
-	long		s_relptr;	/* file ptr to relocation */
-	long		s_lnnoptr;	/* file ptr to line numbers */
+	int32_t		s_paddr;	/* physical address, aliased s_nlib */
+	int32_t		s_vaddr;	/* virtual address */
+	int32_t		s_size;		/* section size */
+	int32_t		s_scnptr;	/* file ptr to raw data for section */
+	int32_t		s_relptr;	/* file ptr to relocation */
+	int32_t		s_lnnoptr;	/* file ptr to line numbers */
 	unsigned short	s_nreloc;	/* number of relocation entries */
 	unsigned short	s_nlnno;	/* number of line number entries */
-	long		s_flags;	/* flags */
+	int32_t		s_flags;	/* flags */
 	};
 
 /* the number of shared libraries in a .lib section in an absolute output file

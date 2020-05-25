@@ -7,18 +7,24 @@
 
 /* #ident	"@(#)sgs-inc:common/aouthdr.h	1.4" */
 
+#if __STDC__
+#include <stdint.h>
+#else
+typedef long int32_t;
+#endif
+
 typedef	struct aouthdr {
 	short	magic;		/* see magic.h				*/
 	short	vstamp;		/* version stamp			*/
-	long	tsize;		/* text size in bytes, padded to FW
+	int32_t	tsize;		/* text size in bytes, padded to FW
 				   bdry					*/
-	long	dsize;		/* initialized data "  "		*/
-	long	bsize;		/* uninitialized data "   "		*/
+	int32_t	dsize;		/* initialized data "  "		*/
+	int32_t	bsize;		/* uninitialized data "   "		*/
 #if U3B
-	long	dum1;
-	long	dum2;		/* pad to entry point	*/
+	int32_t	dum1;
+	int32_t	dum2;		/* pad to entry point	*/
 #endif
-	long	entry;		/* entry pt.				*/
-	long	text_start;	/* base of text used for this file	*/
-	long	data_start;	/* base of data used for this file	*/
+	int32_t	entry;		/* entry pt.				*/
+	int32_t	text_start;	/* base of text used for this file	*/
+	int32_t	data_start;	/* base of data used for this file	*/
 } AOUTHDR;
