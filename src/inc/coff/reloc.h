@@ -9,9 +9,15 @@
 /*
  */
 
+#if __STDC__
+#include <stdint.h>
+#else
+typedef long int32_t;
+#endif
+
 struct reloc {
-	long	r_vaddr;	/* (virtual) address of reference */
-	long	r_symndx;	/* index into symbol table */
+	int32_t	r_vaddr;	/* (virtual) address of reference */
+	int32_t	r_symndx;	/* index into symbol table */
 	unsigned short	r_type;		/* relocation type */
 	};
 
